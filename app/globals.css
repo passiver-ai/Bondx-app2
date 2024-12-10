@@ -34,3 +34,24 @@
   font-weight: 600;
   font-style: normal;
 }
+
+.pretendard-400 {
+  font-family: "Pretendard";
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.pretendard-500 {
+  font-family: "Pretendard";
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.pretendard-600 {
+  font-family: "Pretendard";
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}

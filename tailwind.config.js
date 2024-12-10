@@ -11,9 +11,11 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
-      slate: {
+      neutral: {
         50: "#F1F5F9",
+        300: "#CBD5E1",
         700: "#334155",
+        800: "#1E293B",
       },
     },
   },
