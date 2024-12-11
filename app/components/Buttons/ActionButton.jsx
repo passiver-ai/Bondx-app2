@@ -15,7 +15,7 @@ const ActionButton = ({
       type={type || "button"}
       onClick={onClick}
       disabled={isDisabled || isLoading}
-      className={`relative rounded-[6px] py-[10px] px-4 flex items-center justify-center disabled:cursor-not-allowed bg-neutral-700 hover:opacity-85 disabled:opacity-50 transition duration-300`}
+      className={`relative rounded-[6px] py-[10px] px-4 flex items-center justify-center disabled:cursor-not-allowed bg-[#334155] hover:opacity-85 disabled:opacity-50 transition duration-300 w-full h-[48px]`}
     >
       {isLoading && (
         <CgSpinnerAlt
@@ -23,7 +23,9 @@ const ActionButton = ({
         />
       )}
       <div className="flex items-center justify-center">
-        <div className={`pretendard-500 text-16 text-white`}>{title}</div>
+        <div className={`pretendard-500 text-[16px] text-white leading-[24px]`}>
+          {title}
+        </div>
       </div>
     </button>
   );
