@@ -16,7 +16,7 @@ export default function Home() {
       <div className="flex flex-col gap-2 w-full">
         <div className="text-[16px] pretendard-400 text-[#1E293B] rounded-[6px] bg-[#E2E8F0] p-3 text-center">
           Check your email and click the verification link to continue. If you
-          don't receive an email, check your spam folder.
+          don&apos;t receive an email, check your spam folder.
         </div>
       </div>
       <div className="w-full">
