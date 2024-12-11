@@ -1,27 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import BondXLogo from "../public/BondXlogo.svg";
-import ActionButton from "./components/Buttons/ActionButton";
+import BondXLogo from "../../public/BondXlogo.svg";
+import ActionButton from "../components/Buttons/ActionButton";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 export default function Home() {
-  const [isError, setIsError] = useState(false);
   const router = useRouter();
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isValid, isDirty },
   } = useForm({
     mode: "onChange",
   });
 
   const onSubmit = (data) => {
-    setIsError(true);
     console.log(data); // Handle form submission here
-    // router?.push("/dashboard");
+    router?.push("/email-varification");
   };
 
   return (
@@ -29,13 +27,8 @@ export default function Home() {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-4 items-center justify-center h-full"
     >
-      {isError && (
-        <div className="text-[16px] pretendard-500 text-[#EF4444] rounded-[6px] bg-[#FEF2F2] p-3 text-center mb-6 -mt-4">
-          The email address does not exist or the password is invalid.
-        </div>
-      )}
       <Image src={BondXLogo} width={118} height={23} alt={"BondX Logo"} />
-      <div className="text-[24px] inter-600 text-black">Login to BONDX</div>
+      <div className="text-[24px] inter-600 text-black">Sign up to BONDX</div>
       <div className="flex flex-col gap-2 w-full">
         <div className="w-full">
           <div className="mb-[2px] pretendard-400 text-[16px] text-black leading-[28px]">
@@ -84,25 +77,57 @@ export default function Home() {
             </p>
           )}
         </div>
+        <div className="w-full">
+          <div className="mb-[2px] pretendard-400 text-[16px] text-black leading-[28px]">
+            Password Confirm
+          </div>
+          <input
+            {...register("password_confirm", {
+              required: "Password Confirm is required",
+              validate: (val) => {
+                if (watch("password") != val) {
+                  return "Passwords do not match";
+                }
+              },
+            })}
+            autoComplete={"off"}
+            className="w-full p-3 rounded-[6px] border-[1px] border-neutral-300 text-[20px]"
+            placeholder="Password Confirm"
+            type="password"
+          />
+          {errors.password_confirm && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.password_confirm.message}
+            </p>
+          )}
+        </div>
+      </div>
+      <div className="w-full">
+        <label className="flex items-center justify-center gap-2">
+          <input
+            type="checkbox"
+            {...register("acceptTerms", {
+              required: "You must accept the terms and conditions",
+            })}
+            className="w-5 h-5 border-neutral-300 accent-[#334155] checked:bg-[#334155] checked:hover:bg-[#1E293B]"
+          />
+          <span className="pretendard-400 leading-[28px] text-[16px] text-black">
+            I accept the terms and conditions
+          </span>
+        </label>
       </div>
       <div className="w-full">
         <ActionButton
-          title={"Login"}
+          title={"Sign up"}
           type={"submit"}
           isDisabled={!isDirty || !isValid}
         />
         <button
-          onClick={() => router?.push("/signup")}
-          type="button"
-          className="w-full h-[48px] p-3 rounded-[6px] border-[1px] border-[#E2E8F0] text-[16px] pretendard-500 mt-[10px] bg-white"
-        >
-          Sign up
-        </button>
-        <button
+          onClick={() => router?.push("/")}
           type="button"
           className="w-full h-[48px] p-3 rounded-[6px] text-[16px] pretendard-500 mt-[10px]"
         >
-          Forgot password?
+          Already signed up?
         </button>
       </div>
     </form>
