@@ -4,8 +4,10 @@ import Image from "next/image";
 import BondXLogo from "../public/BondXlogo.svg";
 import ActionButton from "./components/Buttons/ActionButton";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -16,6 +18,7 @@ export default function Home() {
 
   const onSubmit = (data) => {
     console.log(data); // Handle form submission here
+    router?.push("/dashboard");
   };
 
   return (
@@ -57,6 +60,7 @@ export default function Home() {
                 message: "Password must be at least 6 characters",
               },
             })}
+            autoComplete={"off"}
             className="w-full p-3 rounded-[6px] border-[1px] border-neutral-300 text-[20px]"
             placeholder="Password"
             type="password"
@@ -74,6 +78,12 @@ export default function Home() {
           type={"submit"}
           isDisabled={!isDirty || !isValid}
         />
+        <button className="w-full h-[48px] p-3 rounded-[6px] border-[1px] border-[#E2E8F0] text-[16px] pretendard-500 mt-[10px] bg-white">
+          Sign up
+        </button>
+        <button className="w-full h-[48px] p-3 rounded-[6px] text-[16px] pretendard-500 mt-[10px]">
+          Forgot password?
+        </button>
       </div>
     </form>
   );
