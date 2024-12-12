@@ -63,11 +63,6 @@ export default function Home() {
           <input
             {...register("password", {
               required: "Password is required",
-              pattern: {
-                value: /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-                message:
-                  "Password must contain at least 1 lowercase letter, 1 number, and 1 special character",
-              },
               minLength: {
                 value: 8,
                 message: "Password must be at least 8 characters long",
@@ -100,6 +95,7 @@ export default function Home() {
         </button>
         <button
           type="button"
+          onClick={() => router?.push("/forgot-password")}
           className="w-full h-[48px] p-3 rounded-[6px] text-[16px] pretendard-500 mt-[10px]"
         >
           Forgot password?
