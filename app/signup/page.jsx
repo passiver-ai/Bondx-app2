@@ -113,7 +113,7 @@ export default function Home() {
             className="w-5 h-5 border-neutral-300 accent-[#334155] checked:bg-[#334155] checked:hover:bg-[#1E293B]"
           />
           <span className="pretendard-400 leading-[28px] text-[16px] text-black">
-            I accept the terms and conditions
+            Accept the terms and conditions
           </span>
         </label>
       </div>
