@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-4 items-center justify-center h-full"
+      className="flex flex-col gap-4 items-center justify-center h-full bg-neutral-50 px-6"
     >
       {isError && (
         <div className="text-[16px] pretendard-500 text-[#EF4444] rounded-[6px] bg-[#FEF2F2] p-3 text-center mb-6 -mt-4">

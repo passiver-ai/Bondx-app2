@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-4 items-center justify-center h-full"
+      className="flex flex-col gap-4 items-center justify-center h-full bg-neutral-50 px-6"
     >
       <Image src={BondXLogo} width={118} height={23} alt={"BondX Logo"} />
       <div className="text-[24px] inter-600 text-black">Reset Password</div>
