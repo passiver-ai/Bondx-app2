@@ -14,7 +14,7 @@ const Layout = ({ children, showBottomBar, title, hasBackButton = false }) => {
         } overflow-y-auto no-scrollbar relative`}
       >
         {hasBackButton ? (
-          <div className="h-[56px] pretendard-500 text-[24px] text-[#1E293B] flex items-center sticky top-0 bg-white px-6 z-[99]">
+          <div className="h-[56px] pretendard-500 text-[24px] text-[#1E293B] flex items-center sticky top-0 bg-white px-6 z-[99] border-b-[1px] border-[#E2E8F0]">
             <button onClick={() => router?.back()}>
               <BackIcon />
             </button>
