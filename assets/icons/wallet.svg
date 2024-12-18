@@ -1,0 +1,25 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g id="icon/wallet">
+    <path
+      id="Vector"
+      d="M23.3333 14.0003V9.33366H6.99999C6.38115 9.33366 5.78766 9.08783 5.35007 8.65024C4.91249 8.21266 4.66666 7.61916 4.66666 7.00033C4.66666 5.71699 5.71666 4.66699 6.99999 4.66699H21V9.33366"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      id="Vector_2"
+      d="M4.66666 7V21C4.66666 22.2833 5.71666 23.3333 6.99999 23.3333H23.3333V18.6667"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      id="Vector_3"
+      d="M21 14C20.3812 14 19.7877 14.2458 19.3501 14.6834C18.9125 15.121 18.6667 15.7145 18.6667 16.3333C18.6667 17.6167 19.7167 18.6667 21 18.6667H25.6667V14H21Z"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </g>
+</svg>

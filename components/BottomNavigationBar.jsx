@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
-import DashboardLogo from './Icons/DashboardLogo';
+import clsx from 'clsx';
 import WalletIcon from './Icons/WalletIcon';
-import { useRouter, usePathname } from 'next/navigation';
+import DashboardLogo from './Icons/DashboardLogo';
 import UserProfileIcon from './Icons/UserProfileIcon';
+import { useRouter, usePathname } from 'next/navigation';
 
 const tabs = [
   {
@@ -37,14 +38,15 @@ const BottomNavigationBar = () => {
           {tabs.map((tab, index) => (
             <div key={`tab-${index}`} onClick={() => router.push(tab.route)} className="cursor-pointer min-w-[85px]">
               <div
-                className={`nav-link ${
+                className={clsx(
+                  'nav-link',
                   pathname?.includes(tab?.route)
                     ? 'text-neutral-800 stroke-neutral-800'
-                    : 'text-neutral-400 stroke-neutral-400'
-                }`}>
+                    : 'text-neutral-400 stroke-neutral-400',
+                )}>
                 <div className="flex flex-col justify-between gap-[4px] items-center">
                   <div className="h-[28px]">{tab?.icon}</div>
-                  <div className={`inter-500 text-12 leading-[20px]`}>{tab.label}</div>
+                  <div className="inter-500 text-12 leading-[20px]">{tab.label}</div>
                 </div>
               </div>
             </div>
