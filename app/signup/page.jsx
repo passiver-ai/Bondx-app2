@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import BondXLogo from "../../public/BondXlogo.svg";
-import ActionButton from "../components/Buttons/ActionButton";
+import ActionButton from "@/components/Buttons/ActionButton";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
