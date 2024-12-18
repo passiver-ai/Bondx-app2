@@ -1,4 +1,6 @@
+import clsx from 'clsx';
 import localFont from 'next/font/local';
+import { Inter } from 'next/font/google';
 
 import './globals.css';
 
@@ -7,10 +9,17 @@ const geistSans = localFont({
   variable: '--font-geist-sans',
   weight: '100 900',
 });
+
 const geistMono = localFont({
   src: '../fonts/GeistMonoVF.woff',
   variable: '--font-geist-mono',
   weight: '100 900',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap', // Matches `display=swap` in your link
 });
 
 export const metadata = {
@@ -21,16 +30,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-          rel="stylesheet"
-        />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.css" rel="stylesheet" />
-      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}>
+      <body className={clsx(inter.variable, geistSans.variable, geistMono.variable, 'antialiased bg-white')}>
         <div className="flex flex-col max-w-[506px] m-auto h-screen w-full overflow-hidden">{children}</div>
       </body>
     </html>
