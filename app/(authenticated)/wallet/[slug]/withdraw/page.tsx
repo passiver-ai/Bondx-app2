@@ -23,9 +23,15 @@ import {
 import { Input } from '@kit/ui/input';
 
 const availableBalance = 3.291029; // Example balance for BNB
+const bnbAddressRegex = /^0x[a-fA-F0-9]{40}$/;
 
 const transferSchema = z.object({
-  address: z.string().min(1, 'Address is required').trim(),
+  address: z
+    .string()
+    .min(1, 'Address is required')
+    .refine((val) => bnbAddressRegex.test(val), {
+      message: 'The address format is wrong.',
+    }),
   amount: z
     .number()
     .positive('Amount must be greater than zero')
@@ -59,7 +65,7 @@ export default function Withdraw() {
 
     await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate async work
 
-    router.push('wallet/bnb/withdraw/confirm');
+    router.push('wallet/bnb/withdraw/confirmation');
   };
 
   const handleMaxClick = () => {

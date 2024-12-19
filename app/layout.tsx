@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn('bg-white antialiased', heading.variable)}>
         <div className="mobile-view">
-          <div className="mobile-wrapper">
+          <div className="mobile-wrapper" id="root-parent">
             <div className="mobile-content">{children}</div>
           </div>
         </div>
