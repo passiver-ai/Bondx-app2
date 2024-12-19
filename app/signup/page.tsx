@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
 import FormMessage from '@/components/FormMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -56,8 +57,9 @@ export default function SignUp() {
     resolver: zodResolver(signUpSchema),
   });
 
-  const onSubmit: SubmitHandler<SignUpFormInputs> = (data) => {
+  const onSubmit: SubmitHandler<SignUpFormInputs> = async (data) => {
     console.log('Sign-Up Data:', data); // Handle sign-up logic here
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate async work
     router.push('/email-verification');
   };
 
@@ -137,8 +139,15 @@ export default function SignUp() {
         <div className="flex w-full flex-col gap-2">
           <Button
             type="submit"
-            disabled={!form.formState.isDirty || !form.formState.isValid}
+            disabled={
+              !form.formState.isDirty ||
+              !form.formState.isValid ||
+              form.formState.isSubmitting
+            }
           >
+            {form.formState.isSubmitting && (
+              <Loader2 className="mr-1 animate-spin" />
+            )}
             Sign up
           </Button>
           <Button type="button" variant="link" onClick={() => router.push('/')}>

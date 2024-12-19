@@ -3,10 +3,12 @@
 import * as React from 'react';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
 import FormMessage from '@/components/FormMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -34,6 +36,7 @@ const loginSchema = z.object({
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
 export default function SignIn() {
+  const router = useRouter();
   const [isError, setIsError] = React.useState(false);
 
   const form = useForm<LoginFormInputs>({
@@ -41,11 +44,13 @@ export default function SignIn() {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit: SubmitHandler<LoginFormInputs> = (data) => {
+  const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     console.log(data); // Handle form submission here
     setIsError(false);
-    // Uncomment below to navigate to dashboard
-    // router.push('/dashboard');
+
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate async work
+
+    router.push('/dashboard');
   };
 
   return (
@@ -95,8 +100,15 @@ export default function SignIn() {
         <div className="flex w-full flex-col gap-2">
           <Button
             type="submit"
-            disabled={!form.formState.isDirty || !form.formState.isValid}
+            disabled={
+              !form.formState.isDirty ||
+              !form.formState.isValid ||
+              form.formState.isSubmitting
+            }
           >
+            {form.formState.isSubmitting && (
+              <Loader2 className="mr-1 animate-spin" />
+            )}
             Login
           </Button>
           <Button asChild type="button" variant="secondary">

@@ -78,7 +78,12 @@ const AuthenticatedLayout: React.FC<React.PropsWithChildren> = ({
 
   return (
     <div className="min-h-full w-full">
-      <header className="container fixed top-0 z-[99] flex h-[56px] items-center border-b-[1px] border-[#E2E8F0] bg-white">
+      <header
+        className={cn(
+          'container sticky top-0 z-[99] flex h-[56px] items-center border-[#E2E8F0] bg-white',
+          hasBackButton && 'border-b-[1px]',
+        )}
+      >
         {hasBackButton && (
           <button onClick={() => router?.back()}>
             <Icon size={26} name="back" />
@@ -86,16 +91,14 @@ const AuthenticatedLayout: React.FC<React.PropsWithChildren> = ({
         )}
         <div
           className={cn(
-            'w-full text-[#1E293B]',
-            hasBackButton
-              ? 'pr-[26px] text-center text-[16px] font-normal'
-              : 'text-[24px] font-semibold',
+            'w-full font-semibold text-[#1E293B]',
+            hasBackButton ? 'pr-[26px] text-center text-[18px]' : 'text-[24px]',
           )}
         >
           {title}
         </div>
       </header>
-      <div className={cn('relative pt-[60px]', showBottomBar && 'pb-[80px]')}>
+      <div className={cn('relative', showBottomBar && 'pb-[80px]')}>
         {children}
       </div>
       {showBottomBar && <BottomNavigationBar />}

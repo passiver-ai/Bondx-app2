@@ -190,7 +190,8 @@ Optimize dropdowns for mobile
 }
 
 /* Adjust Form */
-.space-y-2 > input {
+.space-y-2 > input,
+.space-y-2 > .input-box {
   margin-top: calc(0.5rem * calc(0.25 - var(--tw-space-y-reverse))) !important;
 }
 

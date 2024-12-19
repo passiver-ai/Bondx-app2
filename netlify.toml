@@ -1,6 +1,10 @@
 [build]
-  command = "npm run build" # Ensure this matches your build command
+  command = "pnpm build"    # Ensure this matches your build command
   publish = ".next"         # This is the default build output directory
+  edge_functions = ".netlify/edge-functions"
+
+[functions]
+  directory = ".netlify/functions"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

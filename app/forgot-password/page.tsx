@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
 import FormMessage from '@/components/FormMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -37,8 +38,9 @@ export default function ForgotPassword() {
     resolver: zodResolver(forgotPasswordSchema),
   });
 
-  const onSubmit: SubmitHandler<ForgotPasswordInputs> = (data) => {
+  const onSubmit: SubmitHandler<ForgotPasswordInputs> = async (data) => {
     console.log('Forgot Password Data:', data); // Handle form submission logic here
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate async work
     router.push('/email-verification'); // Navigate to email verification page
   };
 
@@ -68,8 +70,15 @@ export default function ForgotPassword() {
         <div className="flex w-full flex-col gap-2">
           <Button
             type="submit"
-            disabled={!form.formState.isDirty || !form.formState.isValid}
+            disabled={
+              !form.formState.isDirty ||
+              !form.formState.isValid ||
+              form.formState.isSubmitting
+            }
           >
+            {form.formState.isSubmitting && (
+              <Loader2 className="mr-1 animate-spin" />
+            )}
             Send Verification E-mail
           </Button>
         </div>

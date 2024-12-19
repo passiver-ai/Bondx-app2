@@ -2,10 +2,13 @@
 
 import * as React from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 import Icon from '@/components/Icon';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
+
+import { Heading } from '@kit/ui/heading';
 
 export default function Wallet() {
   const { setTitle, setHasBackButton, setShowBottomBar } =
@@ -20,32 +23,28 @@ export default function Wallet() {
   return (
     <div className="container py-2">
       <div className="space-y-6">
-        <div className="space-y-2">
+        <div className="space-y-3">
           <Link className="flex items-center" href="/wallet/bnx">
             <div className="flex flex-1 items-center gap-3">
               <div className="relative">
-                <img
-                  src="https://img.freepik.com/premium-vector/bnx-logo-bnx-letter-bnx-letter-logo-design-initials-bnx-logo-linked-with-circle-uppercase-monogram-logo-bnx-typography-technology-business-real-estate-brand_229120-64149.jpg?w=740"
+                <Image
+                  width={54}
+                  height={54}
                   alt="BNX Token"
-                  className="h-[48px] w-[48px] rounded-full bg-gray-100"
+                  src="/images/bnx.png"
+                  className="rounded-full"
                 />
               </div>
               <div>
-                <h2 className="inter-600 text-[18px] text-black">BNX</h2>
-                <p className="pretendard-500 text-[14px] text-[#6B7280]">
-                  BONDX
-                </p>
+                <Heading level={6}>BNX</Heading>
+                <p className="text-[14px] text-[#6B7280]">BONDX</p>
               </div>
             </div>
             <div className="text-right">
-              <div className="inter-600 text-[18px] text-black">
-                2,000.392839
-              </div>
-              <div className="pretendard-500 text-[14px] text-[#6B7280]">
-                ≈ 0 USDT
-              </div>
+              <Heading level={6}>2,000.392839</Heading>
+              <div className="text-[14px] text-[#6B7280]">≈ 0 USDT</div>
             </div>
-            <Icon name="chevron-right" />
+            <Icon name="chevron-right" className="ml-2" />
           </Link>
 
           <div className="flex w-full items-center justify-between rounded-lg bg-gray-100 px-4 py-2 text-sm">
@@ -58,24 +57,24 @@ export default function Wallet() {
           <Link className="flex items-center" href="/wallet/bnx">
             <div className="flex flex-1 items-center gap-3">
               <div className="relative">
-                <img
-                  src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png?v=024"
+                <Image
+                  width={54}
+                  height={54}
                   alt="BNB Token"
-                  className="h-[48px] w-[48px] rounded-full bg-gray-100"
+                  src="/images/bnb.png"
+                  className="rounded-full"
                 />
               </div>
               <div>
-                <h2 className="inter-600 text-[18px] text-black">BNB</h2>
-                <p className="pretendard-500 text-[14px] text-[#6B7280]">BNB</p>
+                <Heading level={6}>BNB</Heading>
+                <p className="text-[14px] text-[#6B7280]">BNB</p>
               </div>
             </div>
             <div className="text-right">
-              <div className="inter-600 text-[18px] text-black">3.291029</div>
-              <div className="pretendard-500 text-[14px] text-[#6B7280]">
-                ≈ 0 USDT
-              </div>
+              <Heading level={6}>3.291029</Heading>
+              <div className="text-[14px] text-[#6B7280]">≈ 0 USDT</div>
             </div>
-            <Icon name="chevron-right" />
+            <Icon name="chevron-right" className="ml-2" />
           </Link>
         </div>
 
@@ -83,28 +82,24 @@ export default function Wallet() {
           <Link className="flex items-center" href="/wallet/bnx">
             <div className="flex flex-1 items-center gap-3">
               <div className="relative">
-                <img
-                  src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=024"
+                <Image
+                  width={54}
+                  height={54}
                   alt="USDT Token"
-                  className="h-[48px] w-[48px] rounded-full bg-gray-100"
+                  src="/images/usdt.png"
+                  className="rounded-full"
                 />
               </div>
               <div>
-                <h2 className="inter-600 text-[18px] text-black">USDT</h2>
-                <p className="pretendard-500 text-[14px] text-[#6B7280]">
-                  Tether USD
-                </p>
+                <Heading level={6}>USDT</Heading>
+                <p className="text-[14px] text-[#6B7280]">Tether USD</p>
               </div>
             </div>
             <div className="text-right">
-              <div className="inter-600 text-[18px] text-black">
-                100.3920491
-              </div>
-              <div className="pretendard-500 text-[14px] text-[#6B7280]">
-                ≈ 0 USDT
-              </div>
+              <Heading level={6}>100.3920491</Heading>
+              <div className="text-[14px] text-[#6B7280]">≈ 0 USDT</div>
             </div>
-            <Icon name="chevron-right" />
+            <Icon name="chevron-right" className="ml-2" />
           </Link>
         </div>
       </div>
