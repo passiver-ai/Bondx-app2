@@ -4,8 +4,11 @@ import * as React from 'react';
 
 const iconList = {
   back: () => import('@/assets/icons/back.svg'),
+  send: () => import('@/assets/icons/send.svg'),
   wallet: () => import('@/assets/icons/wallet.svg'),
   dashboard: () => import('@/assets/icons/dashboard.svg'),
+  'cross-circle': () => import('@/assets/icons/cross-circle.svg'),
+  'alert-circle': () => import('@/assets/icons/alert-circle.svg'),
   'user-profile': () => import('@/assets/icons/user-profile.svg'),
   'chevron-right': () => import('@/assets/icons/chevron-right.svg'),
 };

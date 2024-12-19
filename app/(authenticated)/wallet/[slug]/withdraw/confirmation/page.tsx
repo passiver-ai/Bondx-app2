@@ -3,12 +3,25 @@
 import * as React from 'react';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
+import AlertDialog, {
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/AlertDialog';
+import Icon from '@/components/Icon';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
 
 import { Button } from '@kit/ui/button';
 
 export default function WithdrawConfirmation() {
+  const router = useRouter();
+  const rootRef = React.useRef<HTMLElement>(null);
   const { setTitle, setHasBackButton, setShowBottomBar } =
     useAuthenticatedLayoutContext();
 
@@ -16,11 +29,16 @@ export default function WithdrawConfirmation() {
     setTitle?.('Withdraw');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
+
+    rootRef.current = document.getElementById('root-parent');
   }, [setTitle, setHasBackButton, setShowBottomBar]);
 
-  const handleConfirm = React.useCallback(() => {
-    //
-  }, []);
+  const handleDialogOpenChange = React.useCallback(
+    (open: boolean) => {
+      if (!open) router.push('/wallet/bnb');
+    },
+    [router],
+  );
 
   return (
     <div className="container py-2">
@@ -73,16 +91,46 @@ export default function WithdrawConfirmation() {
             </div>
           </div>
         </div>
-
         {/* <div role="alert" className="mt-2 rounded-[6px] bg-[#FEF2F2] p-3">
           <p className="text-[16px] font-semibold text-[#EF4444]">
             Insufficient fees. Please deposit BNB.
           </p>
         </div> */}
-
-        <Button onClick={handleConfirm} className="w-full">
-          Confirm
-        </Button>
+        <AlertDialog onOpenChange={handleDialogOpenChange}>
+          <AlertDialogTrigger asChild>
+            <Button className="w-full">Confirm</Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent
+            className="max-w-[375px]"
+            portalProps={{ container: rootRef.current }}
+          >
+            <AlertDialogHeader>
+              <div className="flex justify-center">
+                <Icon size={40} name="send" />
+              </div>
+              <AlertDialogTitle className="text-center">
+                Processing...
+              </AlertDialogTitle>
+              <AlertDialogDescription>
+                <span
+                  role="alert"
+                  className="block rounded-[6px] bg-[#F8FAFC] px-6 py-3 text-center text-[16px] font-semibold text-[#475569]"
+                >
+                  Transaction in progress! <br />
+                  This may take a while.
+                </span>
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogAction
+                className="w-full"
+                buttonProps={{ variant: 'outline' }}
+              >
+                Confirm
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </div>
   );

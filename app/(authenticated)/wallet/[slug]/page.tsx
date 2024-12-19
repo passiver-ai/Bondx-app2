@@ -11,6 +11,7 @@ import { Button } from '@kit/ui/button';
 import { Heading } from '@kit/ui/heading';
 
 export default function WalletDetail() {
+  const [sending, setSending] = React.useState(true);
   const { setTitle, setHasBackButton, setShowBottomBar } =
     useAuthenticatedLayoutContext();
 
@@ -18,6 +19,10 @@ export default function WalletDetail() {
     setTitle?.('BNX');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
+
+    setTimeout(() => {
+      setSending(false);
+    }, 10000);
   }, [setTitle, setHasBackButton, setShowBottomBar]);
 
   return (
@@ -61,65 +66,96 @@ export default function WalletDetail() {
 
       <div className="mt-2 flex items-center justify-center">
         <div className="w-full">
-          <div className="border-b border-gray-200 py-3">
-            <div className="flex items-center justify-between">
-              <span>Withdraw</span>
-              <span className="text-red-500">-200.2345432</span>
+          <Link href="/wallet/bnb/transaction/withdraw">
+            <div className="border-b border-gray-200 py-3">
+              <div className="flex items-center justify-between">
+                <span>
+                  Withdraw{' '}
+                  {sending && (
+                    <small className="font-semibold text-[#F97316]">
+                      Pending...
+                    </small>
+                  )}
+                </span>
+                <span className="text-red-500">-3.0001</span>
+              </div>
+              <div className="mt-1 text-sm text-gray-500">
+                2024.12.04 10:01:23
+              </div>
             </div>
-            <div className="mt-1 text-sm text-gray-500">
-              2024.12.04 10:01:23
-            </div>
-          </div>
+          </Link>
 
-          <div className="border-b border-gray-200 py-3">
-            <div className="flex items-center justify-between">
-              <span>Deposit</span>
-              <span className="text-green-500">+2,000.392839</span>
+          <Link href="/wallet/bnb/transaction/withdraw">
+            <div className="border-b border-gray-200 py-3">
+              <div className="flex items-center justify-between">
+                <span>Withdraw</span>
+                <span className="text-red-500">-200.2345432</span>
+              </div>
+              <div className="mt-1 text-sm text-gray-500">
+                2024.12.04 10:01:23
+              </div>
             </div>
-            <div className="mt-1 text-sm text-gray-500">
-              2024.12.06 12:07:36
-            </div>
-          </div>
+          </Link>
 
-          <div className="border-b border-gray-200 py-3">
-            <div className="flex items-center justify-between">
-              <span>Deposit</span>
-              <span className="text-green-500">+2,000.392839</span>
+          <Link href="/wallet/bnb/transaction/withdraw">
+            <div className="border-b border-gray-200 py-3">
+              <div className="flex items-center justify-between">
+                <span>Deposit</span>
+                <span className="text-green-500">+2,000.392839</span>
+              </div>
+              <div className="mt-1 text-sm text-gray-500">
+                2024.12.06 12:07:36
+              </div>
             </div>
-            <div className="mt-1 text-sm text-gray-500">
-              2024.12.06 12:07:36
-            </div>
-          </div>
+          </Link>
 
-          <div className="border-b border-gray-200 py-3">
-            <div className="flex items-center justify-between">
-              <span>Deposit</span>
-              <span className="text-green-500">+2,000.392839</span>
+          <Link href="/wallet/bnb/transaction/withdraw">
+            <div className="border-b border-gray-200 py-3">
+              <div className="flex items-center justify-between">
+                <span>Deposit</span>
+                <span className="text-green-500">+2,000.392839</span>
+              </div>
+              <div className="mt-1 text-sm text-gray-500">
+                2024.12.06 12:07:36
+              </div>
             </div>
-            <div className="mt-1 text-sm text-gray-500">
-              2024.12.06 12:07:36
-            </div>
-          </div>
+          </Link>
 
-          <div className="border-b border-gray-200 py-3">
-            <div className="flex items-center justify-between">
-              <span className="text-black">Withdraw</span>
-              <span className="text-red-500">-200.2345432</span>
+          <Link href="/wallet/bnb/transaction/withdraw">
+            <div className="border-b border-gray-200 py-3">
+              <div className="flex items-center justify-between">
+                <span>Deposit</span>
+                <span className="text-green-500">+2,000.392839</span>
+              </div>
+              <div className="mt-1 text-sm text-gray-500">
+                2024.12.06 12:07:36
+              </div>
             </div>
-            <div className="mt-1 text-sm text-gray-500">
-              2024.12.04 10:01:23
-            </div>
-          </div>
+          </Link>
 
-          <div className="py-3">
-            <div className="flex items-center justify-between">
-              <span>Withdraw</span>
-              <span className="text-red-500">-200.2345432</span>
+          <Link href="/wallet/bnb/transaction/withdraw">
+            <div className="border-b border-gray-200 py-3">
+              <div className="flex items-center justify-between">
+                <span className="text-black">Withdraw</span>
+                <span className="text-red-500">-200.2345432</span>
+              </div>
+              <div className="mt-1 text-sm text-gray-500">
+                2024.12.04 10:01:23
+              </div>
             </div>
-            <div className="mt-1 text-sm text-gray-500">
-              2024.12.04 10:01:23
+          </Link>
+
+          <Link href="/wallet/bnb/transaction/withdraw">
+            <div className="py-3">
+              <div className="flex items-center justify-between">
+                <span>Withdraw</span>
+                <span className="text-red-500">-200.2345432</span>
+              </div>
+              <div className="mt-1 text-sm text-gray-500">
+                2024.12.04 10:01:23
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

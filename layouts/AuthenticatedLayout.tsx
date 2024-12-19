@@ -80,7 +80,7 @@ const AuthenticatedLayout: React.FC<React.PropsWithChildren> = ({
     <div className="min-h-full w-full">
       <header
         className={cn(
-          'container sticky top-0 z-[99] flex h-[56px] items-center border-[#E2E8F0] bg-white',
+          'container sticky top-0 z-50 flex h-[56px] items-center border-[#E2E8F0] bg-white',
           hasBackButton && 'border-b-[1px]',
         )}
       >

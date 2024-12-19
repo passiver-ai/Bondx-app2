@@ -1,4 +1,4 @@
-import { type Metadata } from 'next';
+import type { Metadata } from 'next';
 
 import { heading } from '@/lib/fonts';
 import '@/styles/globals.css';
@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn('bg-white antialiased', heading.variable)}>
-        <div className="mobile-view">
-          <div className="mobile-wrapper" id="root-parent">
+        <div className="mobile-view" id="root-parent">
+          <div className="mobile-wrapper">
             <div className="mobile-content">{children}</div>
           </div>
         </div>
