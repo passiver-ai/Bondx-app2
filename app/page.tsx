@@ -2,9 +2,16 @@
 
 import * as React from 'react';
 
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
 import FormMessage from '@/components/FormMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
+import { z } from 'zod';
+
 import { Button } from '@kit/ui/button';
 import {
   Form,
@@ -15,11 +22,6 @@ import {
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
-import { Loader2 } from 'lucide-react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { type SubmitHandler, useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 // Define the Zod schema for form validation
 const loginSchema = z.object({

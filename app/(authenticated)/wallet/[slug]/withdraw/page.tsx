@@ -2,9 +2,15 @@
 
 import * as React from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import FormMessage from '@/components/FormMessage';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
+import { z } from 'zod';
+
 import { Button } from '@kit/ui/button';
 import {
   Form,
@@ -15,10 +21,6 @@ import {
   FormLabel,
 } from '@kit/ui/form';
 import { Input } from '@kit/ui/input';
-import { Loader2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { type SubmitHandler, useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 const availableBalance = 3.291029; // Example balance for BNB
 const bnbAddressRegex = /^0x[a-fA-F0-9]{40}$/;
@@ -63,7 +65,7 @@ export default function Withdraw() {
 
     await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate async work
 
-    router.push('wallet/bnb/withdraw/confirmation');
+    router.push('/wallet/bnb/withdraw/confirmation');
   };
 
   const handleMaxClick = () => {
@@ -104,9 +106,15 @@ export default function Withdraw() {
                         type="number"
                         placeholder="Enter Amount"
                         step="0.000001"
-                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
                         onBlur={() => field.onBlur()}
                         value={field.value ?? ''}
+                        onChange={(e) =>
+                          field.onChange(
+                            e.target.valueAsNumber < 0
+                              ? 0
+                              : e.target.valueAsNumber,
+                          )
+                        }
                       />
                       <Button type="button" onClick={handleMaxClick}>
                         Max

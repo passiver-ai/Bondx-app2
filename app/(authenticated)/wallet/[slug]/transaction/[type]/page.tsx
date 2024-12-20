@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
+
 import { Button } from '@kit/ui/button';
 
 export default function TransactionDetail() {

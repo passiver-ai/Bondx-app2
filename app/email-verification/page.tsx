@@ -1,9 +1,11 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
+
 import { Button } from '@kit/ui/button';
 import { Heading } from '@kit/ui/heading';
-import { useRouter } from 'next/navigation';
 
 export default function EmailVerification() {
   const router = useRouter();

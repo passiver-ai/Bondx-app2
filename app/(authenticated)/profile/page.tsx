@@ -2,12 +2,14 @@
 
 import * as React from 'react';
 
+import Link from 'next/link';
+
 import Icon from '@/components/Icon';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
+
 import { Badge } from '@kit/ui/badge';
 import { Button } from '@kit/ui/button';
 import { Heading } from '@kit/ui/heading';
-import Link from 'next/link';
 
 export default function Profile() {
   const { setTitle, setHasBackButton, setShowBottomBar } =

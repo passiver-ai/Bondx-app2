@@ -2,9 +2,11 @@
 
 import * as React from 'react';
 
-import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
-import { Button } from '@kit/ui/button';
 import Image from 'next/image';
+
+import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
+
+import { Button } from '@kit/ui/button';
 
 export default function Deposit() {
   const [isCopied, setCopied] = React.useState(false);

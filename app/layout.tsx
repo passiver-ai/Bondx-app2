@@ -1,8 +1,9 @@
-import { heading } from '@/lib/fonts';
-import { cn } from '@kit/ui/utils';
 import type { Metadata } from 'next';
 
+import { heading } from '@/lib/fonts';
 import '@/styles/globals.css';
+
+import { cn } from '@kit/ui/utils';
 
 export const metadata: Metadata = {
   title: 'BondX',

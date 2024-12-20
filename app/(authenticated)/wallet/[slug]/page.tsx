@@ -2,11 +2,13 @@
 
 import * as React from 'react';
 
-import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
-import { Button } from '@kit/ui/button';
-import { Heading } from '@kit/ui/heading';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
+
+import { Button } from '@kit/ui/button';
+import { Heading } from '@kit/ui/heading';
 
 export default function WalletDetail() {
   const [sending, setSending] = React.useState(true);
@@ -144,7 +146,7 @@ export default function WalletDetail() {
           </Link>
 
           <Link href="/wallet/bnb/transaction/withdraw">
-            <div className="py-3">
+            <div className="border-b border-gray-200 py-3">
               <div className="flex items-center justify-between">
                 <span>Withdraw</span>
                 <span className="text-red-500">-200.2345432</span>

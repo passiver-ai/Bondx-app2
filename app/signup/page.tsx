@@ -1,8 +1,14 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
 import FormMessage from '@/components/FormMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
+import { z } from 'zod';
+
 import { Button } from '@kit/ui/button';
 import { Checkbox } from '@kit/ui/checkbox';
 import {
@@ -14,10 +20,6 @@ import {
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
-import { Loader2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { type SubmitHandler, useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 // Zod Schema
 const signUpSchema = z
