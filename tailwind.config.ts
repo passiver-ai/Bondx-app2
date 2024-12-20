@@ -14,6 +14,12 @@ export default {
   ],
   presets: [baseConfig],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1.5rem',
+      },
+    },
     extend: {
       fontSize: {
         base: '16px',

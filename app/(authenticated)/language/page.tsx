@@ -16,11 +16,15 @@ export default function Language() {
   }, [setTitle, setHasBackButton, setShowBottomBar]);
 
   return (
-    <div className="container py-2">
+    <div className="container py-4">
       <nav className="space-y-4">
         <div className="flex items-center">
-          <p className="flex-1">Help Center</p>
-          <Icon className="ml-1 inline-block" name="chevron-right" />
+          <p className="flex-1">English</p>
+          <Icon className="ml-1 inline-block" name="check" />
+        </div>
+        <div className="flex items-center">
+          <p className="flex-1">한국어</p>
+          {/* <Icon className="ml-1 inline-block" name="check" /> */}
         </div>
       </nav>
     </div>
