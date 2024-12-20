@@ -129,8 +129,8 @@ Optimize dropdowns for mobile
 .mobile-wrapper {
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 100vh;
-  min-height: 100vh;
+  max-height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh) * 100);
   max-width: 100vw;
   min-width: 100vw;
   display: flex;
@@ -164,7 +164,7 @@ Optimize dropdowns for mobile
 .mobile-content {
   flex: 1;
   display: flex;
-  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .mobile-content > * {
@@ -182,8 +182,8 @@ Optimize dropdowns for mobile
   }
 
   .mobile-wrapper {
-    max-height: 100vh;
-    min-height: 100vh;
+    max-height: calc(var(--vh, 1vh) * 100);
+    min-height: calc(var(--vh, 1vh) * 100);
     max-width: unset;
     min-width: unset;
   }

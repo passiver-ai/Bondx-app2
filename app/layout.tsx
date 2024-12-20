@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import Viewport from '@/components/Viewport';
 import { heading } from '@/lib/fonts';
 import '@/styles/globals.css';
 
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn('bg-white antialiased', heading.variable)}>
+        <Viewport />
         <div className="mobile-view" id="root-parent">
           <div className="mobile-wrapper">
             <div className="mobile-content">{children}</div>
