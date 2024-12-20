@@ -44,7 +44,7 @@ export default function Wallet() {
               <Heading level={6}>2,000.392839</Heading>
               <div className="text-[14px] text-[#6B7280]">≈ 0 USDT</div>
             </div>
-            <Icon name="chevron-right" className="ml-2" />
+            <Icon name="chevron-right" className="ml-2 text-[20px]" />
           </Link>
 
           <div className="flex w-full items-center justify-between rounded-lg bg-[#F8FAFC] px-4 py-2 text-sm">
@@ -74,7 +74,7 @@ export default function Wallet() {
               <Heading level={6}>3.291029</Heading>
               <div className="text-[14px] text-[#6B7280]">≈ 0 USDT</div>
             </div>
-            <Icon name="chevron-right" className="ml-2" />
+            <Icon name="chevron-right" className="ml-2 text-[20px]" />
           </Link>
         </div>
 
@@ -99,7 +99,7 @@ export default function Wallet() {
               <Heading level={6}>100.3920491</Heading>
               <div className="text-[14px] text-[#6B7280]">≈ 0 USDT</div>
             </div>
-            <Icon name="chevron-right" className="ml-2" />
+            <Icon name="chevron-right" className="ml-2 text-[20px]" />
           </Link>
         </div>
       </div>

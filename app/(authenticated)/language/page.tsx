@@ -20,11 +20,11 @@ export default function Language() {
       <nav className="space-y-4">
         <div className="flex items-center">
           <p className="flex-1">English</p>
-          <Icon className="ml-1 inline-block" name="check" />
+          <Icon className="ml-1 inline-block text-[18px]" name="check" />
         </div>
         <div className="flex items-center">
           <p className="flex-1">한국어</p>
-          {/* <Icon className="ml-1 inline-block" name="check" /> */}
+          {/* <Icon className="ml-1 inline-block text-[18px]" name="check" /> */}
         </div>
       </nav>
     </div>

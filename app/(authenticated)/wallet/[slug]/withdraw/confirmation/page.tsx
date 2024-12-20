@@ -106,7 +106,7 @@ export default function WithdrawConfirmation() {
           >
             <AlertDialogHeader>
               <div className="flex justify-center">
-                <Icon size={40} name="send" />
+                <Icon name="send" className="text-[40px]" />
               </div>
               <AlertDialogTitle className="text-center">
                 Processing...

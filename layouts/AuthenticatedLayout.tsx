@@ -86,7 +86,7 @@ const AuthenticatedLayout: React.FC<React.PropsWithChildren> = ({
       >
         {hasBackButton && (
           <button onClick={() => router?.back()}>
-            <Icon size={26} name="back" />
+            <Icon name="back" className="text-[26px]" />
           </button>
         )}
         <div

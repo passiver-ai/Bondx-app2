@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 
+import { cn } from '@kit/ui/utils';
+
 const iconList = {
   back: () => import('@/assets/icons/back.svg'),
   send: () => import('@/assets/icons/send.svg'),
@@ -17,11 +19,10 @@ const iconList = {
 export type Icons = keyof typeof iconList;
 export type IconProps = {
   name: Icons;
-  size?: number;
   className?: string;
 };
 
-const Icon: React.FC<IconProps> = ({ name, size = 24, className }) => {
+const Icon: React.FC<IconProps> = ({ name, className }) => {
   const [IconComponent, setIconComponent] = React.useState<React.ComponentType<
     React.SVGProps<object>
   > | null>(null);
@@ -41,17 +42,10 @@ const Icon: React.FC<IconProps> = ({ name, size = 24, className }) => {
   }, [name]);
 
   if (!IconComponent) {
-    return <div style={{ width: size, height: size }} />;
+    return <div style={{ width: '1em', height: '1em' }} />;
   }
 
-  return (
-    <IconComponent
-      width={size}
-      height={size}
-      className={className}
-      aria-hidden="true"
-    />
-  );
+  return <IconComponent aria-hidden="true" className={cn(className)} />;
 };
 
 export default Icon;

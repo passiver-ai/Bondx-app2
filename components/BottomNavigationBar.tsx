@@ -50,7 +50,7 @@ const BottomNavigationBar: React.FC = () => {
               >
                 <div className="flex flex-col items-center justify-between gap-[4px]">
                   <div className="h-[28px]">
-                    <Icon size={28} name={tab.icon as IconProps['name']} />
+                    <Icon name={tab.icon as IconProps['name']} className='text-[28px]' />
                   </div>
                   <div className="font-heading text-sm leading-[20px]">
                     {tab.label}

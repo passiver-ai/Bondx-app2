@@ -41,7 +41,10 @@ export default function Profile() {
                 <span className="text-right text-sm text-[#64748B]">
                   Unverified
                 </span>
-                <Icon className="ml-1 inline-block" name="chevron-right" />
+                <Icon
+                  name="chevron-right"
+                  className="ml-1 inline-block text-[18px]"
+                />
               </div>
             </Link>
             <Link href="/" className="block">
@@ -50,14 +53,20 @@ export default function Profile() {
                 <span className="text-right text-sm text-[#64748B]">
                   Unverified
                 </span>
-                <Icon className="ml-1 inline-block" name="chevron-right" />
+                <Icon
+                  name="chevron-right"
+                  className="ml-1 inline-block text-[18px]"
+                />
               </div>
             </Link>
             <Link href="/language" className="block">
               <div className="flex items-center">
                 <p className="flex-1">Language</p>
                 <span className="text-right text-sm text-[#64748B]">ENG</span>
-                <Icon className="ml-1 inline-block" name="chevron-right" />
+                <Icon
+                  name="chevron-right"
+                  className="ml-1 inline-block text-[18px]"
+                />
               </div>
             </Link>
           </nav>
@@ -70,7 +79,10 @@ export default function Profile() {
             <Link href="/" className="block">
               <div className="flex items-center">
                 <p className="flex-1">Help Center</p>
-                <Icon className="ml-1 inline-block" name="chevron-right" />
+                <Icon
+                  name="chevron-right"
+                  className="ml-1 inline-block text-[18px]"
+                />
               </div>
             </Link>
           </nav>
