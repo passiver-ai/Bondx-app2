@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
 import FormMessage from '@/components/FormMessage';
@@ -12,11 +12,11 @@ import { z } from 'zod';
 import { Button } from '@kit/ui/button';
 import { Checkbox } from '@kit/ui/checkbox';
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 
 import FormMessage from '@/components/FormMessage';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
@@ -13,12 +13,12 @@ import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
 } from '@kit/ui/form';
 import { Input } from '@kit/ui/input';
 

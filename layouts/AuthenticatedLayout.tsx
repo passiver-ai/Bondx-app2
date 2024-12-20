@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 
 import BottomNavigationBar from '@/components/BottomNavigationBar';
 import Icon from '@/components/Icon';

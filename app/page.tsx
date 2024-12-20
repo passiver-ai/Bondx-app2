@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 
+import { useRouter } from 'next-nprogress-bar';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
 import FormMessage from '@/components/FormMessage';

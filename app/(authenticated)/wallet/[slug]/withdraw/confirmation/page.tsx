@@ -2,17 +2,17 @@
 
 import * as React from 'react';
 
+import { useRouter } from 'next-nprogress-bar';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import AlertDialog, {
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
+    AlertDialogAction,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
 } from '@/components/AlertDialog';
 import Icon from '@/components/Icon';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';

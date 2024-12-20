@@ -2,7 +2,9 @@
 
 import * as React from 'react';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+
+import { useRouter } from 'next-nprogress-bar';
 
 import { cn } from '@kit/ui/utils';
 
@@ -50,7 +52,10 @@ const BottomNavigationBar: React.FC = () => {
               >
                 <div className="flex flex-col items-center justify-between gap-[4px]">
                   <div className="h-[28px]">
-                    <Icon name={tab.icon as IconProps['name']} className='text-[28px]' />
+                    <Icon
+                      name={tab.icon as IconProps['name']}
+                      className="text-[28px]"
+                    />
                   </div>
                   <div className="font-heading text-sm leading-[20px]">
                     {tab.label}

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import PageTransition from '@/components/PageTransition';
+import ProgressBar from '@/components/ProgressBar';
 import Viewport from '@/components/Viewport';
 import { heading } from '@/lib/fonts';
 import '@/styles/globals.css';
@@ -19,12 +21,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn('bg-white antialiased', heading.variable)}>
-        <Viewport />
         <div className="mobile-view" id="root-parent">
           <div className="mobile-wrapper">
-            <div className="mobile-content">{children}</div>
+            <PageTransition
+              duration={500}
+              className="mobile-content"
+              transitionClasses={{
+                enter: 'opacity-100',
+                exit: 'opacity-0',
+              }}
+            >
+              {children}
+            </PageTransition>
           </div>
         </div>
+        <ProgressBar />
+        <Viewport />
       </body>
     </html>
   );
