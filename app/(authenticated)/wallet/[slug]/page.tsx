@@ -2,13 +2,11 @@
 
 import * as React from 'react';
 
-import Image from 'next/image';
-import Link from 'next/link';
-
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
-
 import { Button } from '@kit/ui/button';
 import { Heading } from '@kit/ui/heading';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function WalletDetail() {
   const [sending, setSending] = React.useState(true);

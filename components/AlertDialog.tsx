@@ -2,11 +2,10 @@
 
 import * as React from 'react';
 
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-import type { VariantProps } from 'class-variance-authority';
-
 import { buttonVariants } from '@kit/ui/button';
 import { cn } from '@kit/ui/utils';
+import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import type { VariantProps } from 'class-variance-authority';
 
 const AlertDialog = AlertDialogPrimitive.Root;
 
@@ -149,14 +148,7 @@ AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName;
 
 export default AlertDialog;
 export {
-  AlertDialogPortal,
-  AlertDialogOverlay,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTitle,
-  AlertDialogDescription,
   AlertDialogAction,
-  AlertDialogCancel,
+  AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, AlertDialogPortal, AlertDialogTitle, AlertDialogTrigger
 };
+

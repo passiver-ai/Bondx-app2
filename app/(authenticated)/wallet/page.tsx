@@ -2,13 +2,11 @@
 
 import * as React from 'react';
 
-import Image from 'next/image';
-import Link from 'next/link';
-
 import Icon from '@/components/Icon';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
-
 import { Heading } from '@kit/ui/heading';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Wallet() {
   const { setTitle, setHasBackButton, setShowBottomBar } =

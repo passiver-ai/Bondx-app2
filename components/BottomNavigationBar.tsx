@@ -2,10 +2,8 @@
 
 import * as React from 'react';
 
-import { usePathname, useRouter } from 'next/navigation';
-
 import { cn } from '@kit/ui/utils';
-
+import { usePathname, useRouter } from 'next/navigation';
 import Icon, { type IconProps } from './Icon';
 
 const tabs = [

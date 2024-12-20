@@ -2,12 +2,10 @@
 
 import * as React from 'react';
 
-import { useRouter } from 'next/navigation';
-
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
-
 import { Button } from '@kit/ui/button';
 import { Heading } from '@kit/ui/heading';
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
   const router = useRouter();

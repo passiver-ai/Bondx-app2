@@ -2,14 +2,12 @@
 
 import * as React from 'react';
 
-import Link from 'next/link';
-
 import Icon from '@/components/Icon';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
-
 import { Badge } from '@kit/ui/badge';
 import { Button } from '@kit/ui/button';
 import { Heading } from '@kit/ui/heading';
+import Link from 'next/link';
 
 export default function Profile() {
   const { setTitle, setHasBackButton, setShowBottomBar } =
@@ -53,7 +51,7 @@ export default function Profile() {
                 <Icon className="ml-1 inline-block" name="chevron-right" />
               </div>
             </Link>
-            <Link href="/" className="block">
+            <Link href="/language" className="block">
               <div className="flex items-center">
                 <p className="flex-1">Language</p>
                 <span className="text-right text-sm text-[#64748B]">ENG</span>

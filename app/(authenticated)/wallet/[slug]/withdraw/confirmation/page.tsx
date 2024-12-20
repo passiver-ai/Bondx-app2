@@ -2,9 +2,6 @@
 
 import * as React from 'react';
 
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-
 import AlertDialog, {
   AlertDialogAction,
   AlertDialogContent,
@@ -16,8 +13,9 @@ import AlertDialog, {
 } from '@/components/AlertDialog';
 import Icon from '@/components/Icon';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
-
 import { Button } from '@kit/ui/button';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function WithdrawConfirmation() {
   const router = useRouter();

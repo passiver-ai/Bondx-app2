@@ -2,15 +2,9 @@
 
 import * as React from 'react';
 
-import { useRouter } from 'next/navigation';
-
 import FormMessage from '@/components/FormMessage';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2 } from 'lucide-react';
-import { type SubmitHandler, useForm } from 'react-hook-form';
-import { z } from 'zod';
-
 import { Button } from '@kit/ui/button';
 import {
   Form,
@@ -21,6 +15,10 @@ import {
   FormLabel,
 } from '@kit/ui/form';
 import { Input } from '@kit/ui/input';
+import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { type SubmitHandler, useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 const availableBalance = 3.291029; // Example balance for BNB
 const bnbAddressRegex = /^0x[a-fA-F0-9]{40}$/;
