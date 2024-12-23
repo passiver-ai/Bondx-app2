@@ -12,6 +12,7 @@ const iconList = {
   wallet: () => import('@/assets/icons/wallet.svg'),
   dashboard: () => import('@/assets/icons/dashboard.svg'),
   'arrow-down': () => import('@/assets/icons/arrow-down.svg'),
+  'arrow-right': () => import('@/assets/icons/arrow-right.svg'),
   'check-circle': () => import('@/assets/icons/check-circle.svg'),
   'cross-circle': () => import('@/assets/icons/cross-circle.svg'),
   'alert-circle': () => import('@/assets/icons/alert-circle.svg'),
@@ -47,7 +48,7 @@ const Icon: React.FC<IconProps> = ({ name, className }) => {
   }, [name]);
 
   if (!IconComponent) {
-    return <div style={{ width: '1em', height: '1em' }} />;
+    return <div className={cn(className)} style={{ width: '1em', height: '1em' }} />;
   }
 
   return <IconComponent aria-hidden="true" className={cn(className)} />;

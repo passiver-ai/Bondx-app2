@@ -55,6 +55,12 @@ export default function SignUp() {
   const form = useForm<SignUpFormInputs>({
     mode: 'onChange',
     resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+      password_confirm: '',
+      acceptTerms: undefined,
+    }
   });
 
   const onSubmit: SubmitHandler<SignUpFormInputs> = async (data) => {

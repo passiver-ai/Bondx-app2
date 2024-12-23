@@ -30,6 +30,7 @@ import {
   FormItem,
   FormLabel,
 } from '@kit/ui/form';
+import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
 import { cn } from '@kit/ui/utils';
 
@@ -54,6 +55,9 @@ export default function PointFree() {
   const form = useForm<FormInputs>({
     mode: 'onChange',
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      id: '',
+    },
   });
 
   const isVerified = React.useMemo(
@@ -81,23 +85,23 @@ export default function PointFree() {
   const handleTransferDialogOpenChange = React.useCallback(
     (open: boolean) => {
       if (!open) {
-        router.push('/pointfree?verified=1');
-        setTransferDialogOpen(false);
         form.reset();
+        setTransferDialogOpen(false);
+        router.push('/pointfree?verified=1');
       }
     },
-    [router, form],
+    [form, router],
   );
 
   const handleVerificationDialogOpenChange = React.useCallback(
     (open: boolean) => {
       if (!open) {
-        router.push('/pointfree?verified=1');
-        setVerificationDialogOpen(false);
         form.reset();
+        setVerificationDialogOpen(false);
+        router.push('/pointfree?verified=1');
       }
     },
-    [router, form],
+    [form, router],
   );
 
   return (
@@ -111,9 +115,9 @@ export default function PointFree() {
           <hr className="my-2" />
           <div className="space-y-1">
             <span className="text-sm">Available</span>
-            <p>510,243,000 BONDX</p>
+            <p>{isVerified ? '0' : '510,243,000'} BONDX</p>
             <Icon name="arrow-down" />
-            <p>241,240 Point</p>
+            <p>{isVerified ? '0' : '241,240'} Point</p>
           </div>
         </div>
 
@@ -176,6 +180,31 @@ export default function PointFree() {
             )}
           </form>
         </Form>
+
+        <Heading level={5}>History</Heading>
+
+        <div className="w-full border-b border-gray-200 py-3">
+          <span className="text-sm text-[#64748B]">24.12.05</span>
+          <p>
+            510,243,000 BONDX{' '}
+            <Icon
+              name="arrow-right"
+              className="inline-block align-[-0.175em]"
+            />{' '}
+            241,240 Point
+          </p>
+        </div>
+        <div className="w-full py-3">
+          <span className="text-sm text-[#64748B]">24.12.05</span>
+          <p>
+            3,000 BONDX{' '}
+            <Icon
+              name="arrow-right"
+              className="inline-block align-[-0.175em]"
+            />{' '}
+            240 Point
+          </p>
+        </div>
       </div>
 
       <AlertDialog

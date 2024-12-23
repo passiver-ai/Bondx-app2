@@ -52,6 +52,11 @@ export default function HelpSubmission() {
   const form = useForm<z.infer<typeof formSchema>>({
     mode: 'onChange',
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      category: '',
+      title: '',
+      description: '',
+    }
   });
 
   React.useLayoutEffect(() => {

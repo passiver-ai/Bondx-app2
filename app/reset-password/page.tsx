@@ -11,11 +11,11 @@ import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
@@ -45,6 +45,10 @@ export default function ResetPassword() {
   const form = useForm<ResetPasswordFormInputs>({
     mode: 'onChange',
     resolver: zodResolver(resetPasswordSchema),
+    defaultValues: {
+      password: '',
+      password_confirm: '',
+    }
   });
 
   const onSubmit: SubmitHandler<ResetPasswordFormInputs> = async (data) => {
