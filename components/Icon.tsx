@@ -8,12 +8,17 @@ const iconList = {
   back: () => import('@/assets/icons/back.svg'),
   send: () => import('@/assets/icons/send.svg'),
   check: () => import('@/assets/icons/check.svg'),
+  trash: () => import('@/assets/icons/trash.svg'),
   wallet: () => import('@/assets/icons/wallet.svg'),
   dashboard: () => import('@/assets/icons/dashboard.svg'),
+  'arrow-down': () => import('@/assets/icons/arrow-down.svg'),
+  'check-circle': () => import('@/assets/icons/check-circle.svg'),
   'cross-circle': () => import('@/assets/icons/cross-circle.svg'),
   'alert-circle': () => import('@/assets/icons/alert-circle.svg'),
   'user-profile': () => import('@/assets/icons/user-profile.svg'),
   'chevron-right': () => import('@/assets/icons/chevron-right.svg'),
+  'message-circle': () => import('@/assets/icons/message-circle.svg'),
+  'clipboard-signature': () => import('@/assets/icons/clipboard-signature.svg'),
 };
 
 export type Icons = keyof typeof iconList;

@@ -11,11 +11,11 @@ import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
@@ -25,7 +25,7 @@ const forgotPasswordSchema = z.object({
   email: z
     .string()
     .email('Invalid email address')
-    .nonempty('Email is required'),
+    .min(1, 'Email is required'),
 });
 
 // Infer TypeScript type for the form inputs

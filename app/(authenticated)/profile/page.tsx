@@ -47,7 +47,7 @@ export default function Profile() {
                 />
               </div>
             </Link>
-            <Link href="/" className="block">
+            <Link href="/pointfree" className="block">
               <div className="flex items-center">
                 <p className="flex-1">PointFree</p>
                 <span className="text-right text-sm text-[#64748B]">
@@ -76,7 +76,7 @@ export default function Profile() {
           <Heading level={4}>Support</Heading>
 
           <nav className="space-y-4">
-            <Link href="/" className="block">
+            <Link href="/help" className="block">
               <div className="flex items-center">
                 <p className="flex-1">Help Center</p>
                 <Icon

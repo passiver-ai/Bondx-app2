@@ -21,6 +21,8 @@
     "*.mjs",
     "./config/**/*.ts",
     "components/**/*",
+    "providers/**/*",
+    "store/**/*.ts",
     "lib/**/*.ts",
     "app"
   ],
