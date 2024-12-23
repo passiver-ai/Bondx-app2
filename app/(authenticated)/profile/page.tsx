@@ -35,7 +35,7 @@ export default function Profile() {
           <Heading level={4}>Settings</Heading>
 
           <nav className="space-y-4">
-            <Link href="/" className="block">
+            <Link href="/kyc" className="block">
               <div className="flex items-center">
                 <p className="flex-1">KYC Verification</p>
                 <span className="text-right text-sm text-[#64748B]">

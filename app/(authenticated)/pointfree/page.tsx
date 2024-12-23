@@ -181,29 +181,31 @@ export default function PointFree() {
           </form>
         </Form>
 
-        <Heading level={5}>History</Heading>
+        <div>
+          <Heading level={5}>History</Heading>
 
-        <div className="w-full border-b border-gray-200 py-3">
-          <span className="text-sm text-[#64748B]">24.12.05</span>
-          <p>
-            510,243,000 BONDX{' '}
-            <Icon
-              name="arrow-right"
-              className="inline-block align-[-0.175em]"
-            />{' '}
-            241,240 Point
-          </p>
-        </div>
-        <div className="w-full py-3">
-          <span className="text-sm text-[#64748B]">24.12.05</span>
-          <p>
-            3,000 BONDX{' '}
-            <Icon
-              name="arrow-right"
-              className="inline-block align-[-0.175em]"
-            />{' '}
-            240 Point
-          </p>
+          <div className="w-full border-b border-gray-200 py-3">
+            <span className="text-sm text-[#64748B]">24.12.05</span>
+            <p>
+              510,243,000 BONDX{' '}
+              <Icon
+                name="arrow-right"
+                className="inline-block align-[-0.175em]"
+              />{' '}
+              241,240 Point
+            </p>
+          </div>
+          <div className="w-full py-3">
+            <span className="text-sm text-[#64748B]">24.12.05</span>
+            <p>
+              3,000 BONDX{' '}
+              <Icon
+                name="arrow-right"
+                className="inline-block align-[-0.175em]"
+              />{' '}
+              240 Point
+            </p>
+          </div>
         </div>
       </div>
 

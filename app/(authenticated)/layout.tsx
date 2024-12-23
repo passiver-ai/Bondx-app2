@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 'use client';
 
 import * as React from 'react';
@@ -5,6 +6,10 @@ import * as React from 'react';
 import AuthenticatedLayout, {
   AuthenticatedLayoutProvider,
 } from '@/layouts/AuthenticatedLayout';
+
+/* eslint-disable @next/next/no-sync-scripts */
+
+/* eslint-disable @next/next/no-sync-scripts */
 
 export default function RootLayout({
   children,

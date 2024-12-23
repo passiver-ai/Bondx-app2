@@ -19,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      </head>
       <body className={cn('bg-white antialiased', heading.variable)}>
         <BaseProvider>
           <div className="mobile-view" id="root-parent">
