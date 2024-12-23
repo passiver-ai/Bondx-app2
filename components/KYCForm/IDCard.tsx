@@ -58,15 +58,15 @@ export const IDCard: React.FC = () => {
                       style={{
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        backgroundImage: `url(${preview ?? '/'})`,
+                        backgroundImage: `url(${preview ?? '/images/kyc-placeholder.jpg'})`,
                       }}
                     />
                     <div className="flex space-x-4">
                       <Button
                         asChild
                         type="button"
-                        className="flex-1"
                         onClick={handleRetry}
+                        className="flex-1 cursor-pointer"
                         variant={!preview ? 'default' : 'outline'}
                       >
                         <label htmlFor="file-input">

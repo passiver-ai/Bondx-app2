@@ -135,7 +135,7 @@ function getClassNameBuilder() {
         variant: 'numbers',
         selected: false,
         complete: true,
-        className: 'border-primary text-primary',
+        className: 'border-primary bg-primary text-primary-foreground',
       },
       {
         variant: 'numbers',

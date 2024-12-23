@@ -4,11 +4,11 @@ import * as React from 'react';
 
 import { Button } from '@kit/ui/button';
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
 } from '@kit/ui/form';
 import { Input } from '@kit/ui/input';
 import { useMultiStepFormContext } from '@kit/ui/multi-step-form';
@@ -20,7 +20,7 @@ export const Information: React.FC = () => {
 
   return (
     <Form {...form}>
-      <div className={'mt-6 flex flex-col gap-4'}>
+      <div className={'mt-6 flex flex-col gap-3'}>
         <FormField
           name="information.email"
           render={({ field }) => (

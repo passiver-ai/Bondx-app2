@@ -3,6 +3,15 @@
 
 import * as React from 'react';
 
+import AlertDialog, {
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/AlertDialog';
+import Icon from '@/components/Icon';
 import { IDCard, Information, Phone } from '@/components/KYCForm';
 import { Stepper } from '@/components/Stepper';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
@@ -10,6 +19,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { Heading } from '@kit/ui/heading';
 import {
   MultiStepForm,
   MultiStepFormContextProvider,
@@ -18,6 +28,8 @@ import {
   createStepSchema,
 } from '@kit/ui/multi-step-form';
 import { cn } from '@kit/ui/utils';
+
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 
 const FormSchema = createStepSchema({
   id: z.object({
@@ -50,23 +62,25 @@ const FormSchema = createStepSchema({
     detailedAddress: z.string().optional(),
   }),
   phone: z.object({
-    mobilePhone: z
-      .string()
-      .regex(/^\d{10,15}$/, 'Phone number must be between 10 and 15 digits')
-      .min(1, 'Mobile phone is required'),
+    mobilePhone: z.string().min(1, 'Mobile phone is required'),
+    verificationCode: z.string().optional(),
   }),
 });
 
 type FormValues = z.infer<typeof FormSchema>;
 
 export default function Help() {
+  const rootRef = React.useRef<HTMLElement>(null);
+  const [isSubmitted, setSubmitted] = React.useState(false);
+  const [isVerificationDialogOpen, setVerificationDialogOpen] =
+    React.useState(false);
   const { setTitle, setHasBackButton, setShowBottomBar } =
     useAuthenticatedLayoutContext();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
     reValidateMode: 'onBlur',
-    mode: 'onBlur',
+    mode: 'onChange',
     defaultValues: {
       id: {
         image: null,
@@ -82,6 +96,7 @@ export default function Help() {
       },
       phone: {
         mobilePhone: '',
+        verificationCode: '',
       },
     },
   });
@@ -90,36 +105,98 @@ export default function Help() {
     setTitle?.('KYC Verification');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
+
+    rootRef.current = document.getElementById('root-parent');
   }, [setTitle, setHasBackButton, setShowBottomBar]);
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     console.log('Form submitted:', data);
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    setVerificationDialogOpen(true);
   };
+
+  const handleVerificationDialogOpenChange = React.useCallback(
+    (open: boolean) => {
+      if (!open) {
+        setSubmitted(true);
+        setVerificationDialogOpen(false);
+      }
+    },
+    [],
+  );
 
   return (
     <div className={cn('container flex flex-col py-3')}>
-      <MultiStepForm form={form} schema={FormSchema} onSubmit={onSubmit}>
-        <MultiStepFormHeader>
-          <MultiStepFormContextProvider>
-            {({ currentStepIndex }) => (
-              <Stepper
-                variant={'numbers'}
-                steps={['ID', 'Information', 'Phone']}
-                currentStep={currentStepIndex}
-              />
-            )}
-          </MultiStepFormContextProvider>
-        </MultiStepFormHeader>
-        <MultiStepFormStep name="id">
-          <IDCard />
-        </MultiStepFormStep>
-        <MultiStepFormStep name="information">
-          <Information />
-        </MultiStepFormStep>
-        <MultiStepFormStep name="phone">
-          <Phone />
-        </MultiStepFormStep>
-      </MultiStepForm>
+      {isSubmitted ? (
+        <>
+          <Stepper
+            currentStep={2}
+            variant={'numbers'}
+            steps={['ID', 'Information', 'Phone']}
+          />
+
+          <div className="mt-8 w-full rounded-lg bg-[#F8FAFC] pb-3 pt-5 text-center text-[#334155] space-y-2">
+            <Icon name="file-check" className="text-[36px] inline-block" />
+            <Heading level={4}>Pending...</Heading>
+            <p>
+              The review process takes
+              <br />
+              1-3 business days.
+            </p>
+          </div>
+        </>
+      ) : (
+        <MultiStepForm form={form} schema={FormSchema} onSubmit={onSubmit}>
+          <MultiStepFormHeader>
+            <MultiStepFormContextProvider>
+              {({ currentStepIndex }) => (
+                <Stepper
+                  variant={'numbers'}
+                  steps={['ID', 'Information', 'Phone']}
+                  currentStep={currentStepIndex}
+                />
+              )}
+            </MultiStepFormContextProvider>
+          </MultiStepFormHeader>
+          <MultiStepFormStep name="id">
+            <IDCard />
+          </MultiStepFormStep>
+          <MultiStepFormStep name="information">
+            <Information />
+          </MultiStepFormStep>
+          <MultiStepFormStep name="phone">
+            <Phone />
+          </MultiStepFormStep>
+        </MultiStepForm>
+      )}
+
+      <AlertDialog
+        open={isVerificationDialogOpen}
+        onOpenChange={handleVerificationDialogOpenChange}
+      >
+        <AlertDialogContent
+          className="max-w-[375px]"
+          portalProps={{ container: rootRef.current }}
+        >
+          <AlertDialogHeader>
+            <div className="flex justify-center">
+              <Icon name="check-circle" className="text-[40px]" />
+            </div>
+            <AlertDialogTitle className="text-center">Success</AlertDialogTitle>
+            <AlertDialogDescription className="text-center">
+              Mobile Phone verification completed successfully.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction
+              className="w-full"
+              buttonProps={{ variant: 'outline' }}
+            >
+              Confirm
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
