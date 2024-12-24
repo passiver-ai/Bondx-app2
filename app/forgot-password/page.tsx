@@ -1,12 +1,11 @@
 'use client';
 
-import { useRouter } from 'next-nprogress-bar';
-
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
-import FormMessage from '@/components/FormMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next-nprogress-bar';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
@@ -16,35 +15,36 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
+import { Trans } from '@kit/ui/trans';
 
-// Zod Schema for Validation
 const forgotPasswordSchema = z.object({
   email: z
     .string()
-    .email('Invalid email address')
-    .min(1, 'Email is required'),
+    .min(1, 'common:errors:email:required')
+    .email('common:errors:email:invalid'),
 });
 
-// Infer TypeScript type for the form inputs
 type ForgotPasswordInputs = z.infer<typeof forgotPasswordSchema>;
 
 export default function ForgotPassword() {
   const router = useRouter();
+  const { t } = useTranslation();
   const form = useForm<ForgotPasswordInputs>({
     mode: 'onChange',
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
       email: '',
-    }
+    },
   });
 
   const onSubmit: SubmitHandler<ForgotPasswordInputs> = async (data) => {
-    console.log('Forgot Password Data:', data); // Handle form submission logic here
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate async work
-    router.push('/email-verification'); // Navigate to email verification page
+    console.log('Forgot Password Data:', data);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    router.push('/email-verification');
   };
 
   return (
@@ -54,16 +54,24 @@ export default function ForgotPassword() {
         className="container flex h-full flex-col items-center justify-center gap-4 bg-[#f1f5f9]"
       >
         <BondXLogo />
-        <Heading level={3}>Forgot your password?</Heading>
+        <Heading level={3}>
+          <Trans i18nKey="auth:forgotPasswordHeading" />
+        </Heading>
 
         <div className="flex w-full flex-col gap-2">
           <FormField
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>E-mail</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:email" />
+                </FormLabel>
                 <FormControl>
-                  <Input {...field} type="email" placeholder="E-mail" />
+                  <Input
+                    {...field}
+                    type="email"
+                    placeholder={t('common:form:emailPlaceholder')}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -82,7 +90,7 @@ export default function ForgotPassword() {
             {form.formState.isSubmitting && (
               <Loader2 className="mr-1 animate-spin" />
             )}
-            Send Verification E-mail
+            <Trans i18nKey="auth:sendEmailVerification" />
           </Button>
         </div>
       </form>

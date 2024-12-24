@@ -1,0 +1,26 @@
+{
+  "form": {
+    "email": "이메일",
+    "emailPlaceholder": "이메일",
+    "password": "비밀번호",
+    "passwordPlaceholder": "비밀번호",
+    "passwordConfirmation": "비밀번호 확인",
+    "passwordConfirmationPlaceholder": "비밀번호 확인",
+    "acceptTerms": "약관 및 조건 동의"
+  },
+  "errors": {
+    "email": {
+      "required": "이메일은 필수 항목입니다.",
+      "invalid": "유효하지 않은 이메일 주소입니다."
+    },
+    "password": {
+      "required": "비밀번호는 필수 항목입니다.",
+      "confirm": "비밀번호가 일치하지 않습니다.",
+      "minLength": "비밀번호는 최소 8자 이상이어야 합니다.",
+      "criteria": "비밀번호는 최소 1개의 특수 문자, 1개의 소문자 및 1개의 숫자를 포함해야 합니다."
+    },
+    "termsCondition": {
+      "required": "약관 및 조건에 동의해야 합니다."
+    }
+  }
+}

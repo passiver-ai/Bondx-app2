@@ -1,17 +1,16 @@
 'use client';
 
-import { useRouter } from 'next-nprogress-bar';
-
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
+import { useRouter } from 'next-nprogress-bar';
 
 import { Button } from '@kit/ui/button';
 import { Heading } from '@kit/ui/heading';
+import { Trans } from '@kit/ui/trans';
 
 export default function EmailVerification() {
   const router = useRouter();
 
   const handleResendEmail = () => {
-    // Logic for resending the verification email
     console.log('Resend verification email triggered');
   };
 
@@ -19,16 +18,17 @@ export default function EmailVerification() {
     <div className="container flex h-full flex-col items-center justify-center gap-4 bg-[#f1f5f9]">
       <BondXLogo />
       <Heading level={4} className="text-center">
-        E-mail Verification Required
+        <Trans i18nKey="auth:emailVerificationHeading" />
       </Heading>
       <p className="w-full rounded-[6px] bg-[#E2E8F0] p-3 text-center text-[16px] text-[#1E293B]">
-        Check your email and click the verification link to continue. If you
-        don&apos;t receive an email, check your spam folder.
+        <Trans i18nKey="auth:emailVerificationMessage" />
       </p>
       <div className="flex w-full flex-col gap-2">
-        <Button onClick={handleResendEmail}>Resend Verification E-mail</Button>
+        <Button onClick={handleResendEmail}>
+          <Trans i18nKey="auth:resendEmailVerification" />
+        </Button>
         <Button variant="secondary" onClick={() => router.push('/')}>
-          Go to Login
+          <Trans i18nKey="auth:goToSignIn" />
         </Button>
       </div>
     </div>

@@ -1,12 +1,11 @@
 'use client';
 
-import { useRouter } from 'next-nprogress-bar';
-
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
-import FormMessage from '@/components/FormMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next-nprogress-bar';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
@@ -17,41 +16,41 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
+import { Trans } from '@kit/ui/trans';
 
-// Zod Schema
 const signUpSchema = z
   .object({
     email: z
       .string()
-      .email('Invalid email address')
-      .min(1, 'Email is required'),
+      .min(1, 'common:errors:email:required')
+      .email('common:errors:email:invalid'),
     password: z
       .string()
-      .min(8, 'The password must be at least 8 characters long')
+      .min(8, 'common:errors:password:minLength')
       .regex(/(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])/, {
-        message:
-          'Password must contain at least 1 special character, 1 lowercase letter, and 1 number',
+        message: 'common:errors:password:criteria',
       }),
     password_confirm: z.string(),
     acceptTerms: z.literal(true, {
       errorMap: () => ({
-        message: 'You must accept the terms and conditions',
+        message: 'common:errors:termsCondition:required',
       }),
     }),
   })
   .refine((data) => data.password === data.password_confirm, {
-    path: ['password_confirm'], // Field to display error
-    message: 'Passwords do not match',
+    path: ['password_confirm'],
+    message: 'common:errors:password:confirm',
   });
 
-// Infer TypeScript type
 type SignUpFormInputs = z.infer<typeof signUpSchema>;
 
 export default function SignUp() {
   const router = useRouter();
+  const { t } = useTranslation();
   const form = useForm<SignUpFormInputs>({
     mode: 'onChange',
     resolver: zodResolver(signUpSchema),
@@ -60,7 +59,7 @@ export default function SignUp() {
       password: '',
       password_confirm: '',
       acceptTerms: undefined,
-    }
+    },
   });
 
   const onSubmit: SubmitHandler<SignUpFormInputs> = async (data) => {
@@ -76,16 +75,24 @@ export default function SignUp() {
         className="container flex h-full flex-col items-center justify-center gap-4 bg-[#f1f5f9]"
       >
         <BondXLogo />
-        <Heading level={3}>Sign up to BONDX</Heading>
+        <Heading level={3}>
+          <Trans i18nKey="auth:signUpHeading" />
+        </Heading>
 
         <div className="flex w-full flex-col gap-2">
           <FormField
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:email" />
+                </FormLabel>
                 <FormControl>
-                  <Input {...field} type="email" placeholder="E-mail" />
+                  <Input
+                    {...field}
+                    type="email"
+                    placeholder={t('common:form:emailPlaceholder')}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -95,13 +102,15 @@ export default function SignUp() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:password" />
+                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
                     type="password"
                     autoComplete="off"
-                    placeholder="Password"
+                    placeholder={t('common:form:passwordPlaceholder')}
                   />
                 </FormControl>
                 <FormMessage />
@@ -112,13 +121,15 @@ export default function SignUp() {
             name="password_confirm"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:passwordConfirmation" />
+                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
                     type="password"
                     autoComplete="off"
-                    placeholder="Confirm Password"
+                    placeholder={t('common:form:passwordConfirmationPlaceholder')}
                   />
                 </FormControl>
                 <FormMessage />
@@ -133,7 +144,7 @@ export default function SignUp() {
                   <Checkbox {...field} />
                 </FormControl>
                 <FormLabel className="mt-0">
-                  Accept the terms and conditions
+                  <Trans i18nKey="common:form:acceptTerms" />
                 </FormLabel>
                 <FormMessage />
               </FormItem>
@@ -141,7 +152,6 @@ export default function SignUp() {
           />
         </div>
 
-        {/* Buttons */}
         <div className="flex w-full flex-col gap-2">
           <Button
             type="submit"
@@ -154,10 +164,10 @@ export default function SignUp() {
             {form.formState.isSubmitting && (
               <Loader2 className="mr-1 animate-spin" />
             )}
-            Sign up
+            <Trans i18nKey="auth:signUp" />
           </Button>
           <Button type="button" variant="link" onClick={() => router.push('/')}>
-            Already signed up?
+            <Trans i18nKey="auth:alreadyHaveAccount" />
           </Button>
         </div>
       </form>

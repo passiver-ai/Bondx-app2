@@ -2,14 +2,14 @@
 
 import * as React from 'react';
 
-import { useRouter } from 'next-nprogress-bar';
 import Link from 'next/link';
 
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
-import FormMessage from '@/components/FormMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next-nprogress-bar';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
@@ -19,24 +19,28 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
+import { Trans } from '@kit/ui/trans';
 
-// Define the Zod schema for form validation
 const loginSchema = z.object({
-  email: z.string().min(1, 'Email is required').email('Invalid email address'),
+  email: z
+    .string()
+    .min(1, 'common:errors:email:required')
+    .email('common:errors:email:invalid'),
   password: z
     .string()
-    .min(1, 'Password is required')
-    .min(8, 'Password must be at least 8 characters long'),
+    .min(1, 'common:errors:password:required')
+    .min(8, 'common:errors:password:minLength'),
 });
 
-// Infer the form data type from the schema
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
 export default function SignIn() {
   const router = useRouter();
+  const { t } = useTranslation();
   const [isError, setIsError] = React.useState(false);
 
   const form = useForm<LoginFormInputs>({
@@ -45,7 +49,7 @@ export default function SignIn() {
     defaultValues: {
       email: '',
       password: '',
-    }
+    },
   });
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
@@ -65,19 +69,27 @@ export default function SignIn() {
       >
         {isError && (
           <div className="-mt-4 mb-6 rounded-[6px] bg-[#FEF2F2] p-3 text-center text-[16px] text-[#EF4444]">
-            The email address does not exist or the password is invalid.
+            <Trans i18nKey="auth:errors:invalidCredential" />
           </div>
         )}
         <BondXLogo />
-        <Heading level={3}>Login to BONDX</Heading>
+        <Heading level={3}>
+          <Trans i18nKey="auth:signInHeading" />
+        </Heading>
         <div className="flex w-full flex-col gap-2">
           <FormField
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>E-mail</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:email" />
+                </FormLabel>
                 <FormControl>
-                  <Input {...field} type="email" placeholder="E-mail" />
+                  <Input
+                    {...field}
+                    type="email"
+                    placeholder={t('common:form:emailPlaceholder')}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -87,13 +99,15 @@ export default function SignIn() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:password" />
+                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
                     type="password"
                     autoComplete="off"
-                    placeholder="Password"
+                    placeholder={t('common:form:passwordPlaceholder')}
                   />
                 </FormControl>
                 <FormMessage />
@@ -113,13 +127,17 @@ export default function SignIn() {
             {form.formState.isSubmitting && (
               <Loader2 className="mr-1 animate-spin" />
             )}
-            Login
+            <Trans i18nKey="auth:signIn" />
           </Button>
           <Button asChild type="button" variant="secondary">
-            <Link href="/signup">Sign up</Link>
+            <Link href="/signup">
+              <Trans i18nKey="auth:signUp" />
+            </Link>
           </Button>
           <Button asChild type="button" variant="link">
-            <Link href="/forgot-password">Forgot password?</Link>
+            <Link href="/forgot-password">
+              <Trans i18nKey="auth:forgotPassword" />
+            </Link>
           </Button>
         </div>
       </form>

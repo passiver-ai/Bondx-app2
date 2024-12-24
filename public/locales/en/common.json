@@ -1,0 +1,26 @@
+{
+  "form": {
+    "email": "E-mail",
+    "emailPlaceholder": "E-mail",
+    "password": "Password",
+    "passwordPlaceholder": "Password",
+    "passwordConfirmation": "Password Confirm",
+    "passwordConfirmationPlaceholder": "Password Confirm",
+    "acceptTerms": "Accept terms and conditions"
+  },
+  "errors": {
+    "email": {
+      "required": "E-mail is required",
+      "invalid": "E-mail is invalid"
+    },
+    "password": {
+      "required": "Password is required",
+      "confirm": "The passwords don't match.",
+      "minLength": "Password must be at least 8 characters long",
+      "criteria": "Password must contain at least 1 special character, 1 lowercase letter, and 1 number"
+    },
+    "termsCondition": {
+      "required": "You must accept the terms and conditions."
+    }
+  }
+}

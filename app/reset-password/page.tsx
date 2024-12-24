@@ -1,12 +1,11 @@
 'use client';
 
-import { useRouter } from 'next-nprogress-bar';
-
 import BondXLogo from '@/assets/images/bond-x-logo.svg';
-import FormMessage from '@/components/FormMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next-nprogress-bar';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
@@ -16,39 +15,39 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
+import { Trans } from '@kit/ui/trans';
 
-// Define Zod schema for validation
 const resetPasswordSchema = z
   .object({
     password: z
       .string()
-      .min(8, 'Password must be at least 8 characters long')
+      .min(8, 'common:errors:password:minLength')
       .regex(/(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])/, {
-        message:
-          'Password must include 1 lowercase letter, 1 number, and 1 special character',
+        message: 'common:errors:password:criteria',
       }),
     password_confirm: z.string(),
   })
   .refine((data) => data.password === data.password_confirm, {
-    path: ['password_confirm'], // Specify the field to show the error
-    message: 'Passwords do not match',
+    path: ['password_confirm'],
+    message: 'common:errors:password:confirm',
   });
 
-// Infer TypeScript type from Zod schema
 type ResetPasswordFormInputs = z.infer<typeof resetPasswordSchema>;
 
 export default function ResetPassword() {
   const router = useRouter();
+  const { t } = useTranslation();
   const form = useForm<ResetPasswordFormInputs>({
     mode: 'onChange',
     resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
       password: '',
       password_confirm: '',
-    }
+    },
   });
 
   const onSubmit: SubmitHandler<ResetPasswordFormInputs> = async (data) => {
@@ -64,20 +63,24 @@ export default function ResetPassword() {
         className="container flex h-full flex-col items-center justify-center gap-4 bg-[#f1f5f9]"
       >
         <BondXLogo />
-        <Heading level={3}>Reset Password</Heading>
+        <Heading level={3}>
+          <Trans i18nKey="auth:resetPasswordHeading" />
+        </Heading>
 
         <div className="flex w-full flex-col gap-2">
           <FormField
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:password" />
+                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
                     type="password"
                     autoComplete="off"
-                    placeholder="Password"
+                    placeholder={t('common:form:passwordPlaceholder')}
                   />
                 </FormControl>
                 <FormMessage />
@@ -88,13 +91,17 @@ export default function ResetPassword() {
             name="password_confirm"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:passwordConfirmation" />
+                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
                     type="password"
                     autoComplete="off"
-                    placeholder="Confirm Password"
+                    placeholder={t(
+                      'common:form:passwordConfirmationPlaceholder',
+                    )}
                   />
                 </FormControl>
                 <FormMessage />
@@ -114,7 +121,7 @@ export default function ResetPassword() {
             {form.formState.isSubmitting && (
               <Loader2 className="mr-1 animate-spin" />
             )}
-            Change Password
+            <Trans i18nKey="auth:changePassword" />
           </Button>
         </div>
       </form>
