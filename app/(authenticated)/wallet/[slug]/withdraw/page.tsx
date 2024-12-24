@@ -2,13 +2,12 @@
 
 import * as React from 'react';
 
-import { useRouter } from 'next-nprogress-bar';
-
-import FormMessage from '@/components/FormMessage';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next-nprogress-bar';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
@@ -19,8 +18,10 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@kit/ui/form';
 import { Input } from '@kit/ui/input';
+import { Trans } from '@kit/ui/trans';
 
 const availableBalance = 3.291029; // Example balance for BNB
 const bnbAddressRegex = /^0x[a-fA-F0-9]{40}$/;
@@ -28,20 +29,21 @@ const bnbAddressRegex = /^0x[a-fA-F0-9]{40}$/;
 const transferSchema = z.object({
   address: z
     .string()
-    .min(1, 'Address is required')
+    .min(1, 'common:errors:walletAddress:required')
     .refine((val) => bnbAddressRegex.test(val), {
-      message: 'The address format is wrong.',
+      message: 'common:errors:walletAddress:format',
     }),
   amount: z
     .number()
-    .positive('Amount must be greater than zero')
-    .lte(availableBalance, 'Insufficient balance.'),
+    .positive('common:errors:amount:min')
+    .lte(availableBalance, 'common:errors:amount:insufficient'),
 });
 
 type TransferFormData = z.infer<typeof transferSchema>;
 
 export default function Withdraw() {
   const router = useRouter();
+  const { t } = useTranslation();
   const { setTitle, setHasBackButton, setShowBottomBar } =
     useAuthenticatedLayoutContext();
 
@@ -86,9 +88,15 @@ export default function Withdraw() {
               name="address"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Address</FormLabel>
+                  <FormLabel>
+                    <Trans i18nKey="common:form:walletAddress" />
+                  </FormLabel>
                   <FormControl>
-                    <Input {...field} type="text" placeholder="Enter Address" />
+                    <Input
+                      {...field}
+                      type="text"
+                      placeholder={t('common:form:walletAddressPlaceholder')}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -98,14 +106,16 @@ export default function Withdraw() {
               name="amount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Amount</FormLabel>
+                  <FormLabel>
+                    <Trans i18nKey="common:form:amount" />
+                  </FormLabel>
                   <FormControl>
                     <div className="input-box flex space-x-2">
                       <Input
                         {...field}
                         type="number"
-                        placeholder="Enter Amount"
                         step="0.000001"
+                        placeholder={t('common:form:amountPlaceholder')}
                         onBlur={() => field.onBlur()}
                         value={field.value ?? ''}
                         onChange={(e) =>
@@ -117,12 +127,12 @@ export default function Withdraw() {
                         }
                       />
                       <Button type="button" onClick={handleMaxClick}>
-                        Max
+                        <Trans i18nKey="common:max" />
                       </Button>
                     </div>
                   </FormControl>
                   <FormDescription>
-                    Available: {availableBalance} BNB
+                    <Trans i18nKey="common:available" />: {availableBalance} BNB
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -142,7 +152,7 @@ export default function Withdraw() {
             {form.formState.isSubmitting && (
               <Loader2 className="mr-1 animate-spin" />
             )}
-            Continue
+            <Trans i18nKey="common:continue" />
           </Button>
         </form>
       </Form>

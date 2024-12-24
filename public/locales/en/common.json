@@ -1,8 +1,15 @@
 {
+  "max": "Max",
   "more": "More",
   "history": "History",
   "copied": "Copied!",
+  "confirm": "Confirm",
+  "continue": "Continue",
+  "completed": "Completed",
   "copyAddress": "Copy Address",
+  "available": "Available",
+  "pending": "Pending",
+  "processing": "Processing",
   "form": {
     "email": "E-mail",
     "emailPlaceholder": "E-mail",
@@ -10,7 +17,11 @@
     "passwordPlaceholder": "Password",
     "passwordConfirmation": "Password Confirm",
     "passwordConfirmationPlaceholder": "Password Confirm",
-    "acceptTerms": "Accept terms and conditions"
+    "acceptTerms": "Accept terms and conditions",
+    "walletAddress": "Address",
+    "walletAddressPlaceholder": "Enter Address",
+    "amount": "Amount",
+    "amountPlaceholder": "Enter Amount"
   },
   "errors": {
     "email": {
@@ -25,6 +36,15 @@
     },
     "termsCondition": {
       "required": "You must accept the terms and conditions."
+    },
+    "walletAddress": {
+      "required": "Address is required",
+      "format": "The address format is wrong"
+    },
+    "amount": {
+      "required": "Amount is required",
+      "min": "Amount must be greater than 0",
+      "insufficient": "Insufficient balance"
     }
   }
 }

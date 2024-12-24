@@ -1,4 +1,7 @@
 {
+  "date": "Date",
+  "address": "Address",
+  "status": "Status",
   "wallet": "Wallet",
   "deposit": "Deposit",
   "depositWarning": "Only send {{chain}} assets to this address.",
@@ -9,5 +12,14 @@
   "lockRemaining": "Lock Remaining",
   "total": "Total",
   "network": "Network",
-  "token": "Token"
+  "token": "Token",
+  "amount": "Amount",
+  "networkFee": "Network Fee",
+  "viewBlockchainExplorer": "View on Blockchain Explorer",
+  "errors": {
+    "insufficientBalance": "Insufficient fees. Please deposit {{token}}."
+  },
+  "messages": {
+    "processing": "Transaction in progress! <br /> This may take a while."
+  }
 }

@@ -80,7 +80,7 @@ export default function WalletDetail() {
                   <Trans i18nKey="wallet:withdraw" />{' '}
                   {sending && (
                     <small className="font-semibold text-[#F97316]">
-                      Pending...
+                      <Trans i18nKey="common:pending" />...
                     </small>
                   )}
                 </span>

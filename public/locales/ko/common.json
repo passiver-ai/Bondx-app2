@@ -1,8 +1,15 @@
 {
+  "max": "최대",
   "more": "더보기",
   "history": "기록",
   "copied": "복사됨!",
+  "confirm": "확인",
+  "continue": "계속하기",
+  "completed": "완료됨",
   "copyAddress": "주소 복사",
+  "available": "사용 가능",
+  "pending": "대기 중",
+  "processing": "처리 중",
   "form": {
     "email": "이메일",
     "emailPlaceholder": "이메일",
@@ -10,7 +17,11 @@
     "passwordPlaceholder": "비밀번호",
     "passwordConfirmation": "비밀번호 확인",
     "passwordConfirmationPlaceholder": "비밀번호 확인",
-    "acceptTerms": "약관 및 조건 동의"
+    "acceptTerms": "약관 및 조건 동의",
+    "walletAddress": "주소",
+    "walletAddressPlaceholder": "주소 입력",
+    "amount": "금액",
+    "amountPlaceholder": "금액 입력"
   },
   "errors": {
     "email": {
@@ -25,6 +36,15 @@
     },
     "termsCondition": {
       "required": "약관 및 조건에 동의해야 합니다."
+    },
+    "walletAddress": {
+      "required": "주소는 필수 항목입니다.",
+      "format": "주소 형식이 잘못되었습니다."
+    },
+    "amount": {
+      "required": "금액은 필수 항목입니다.",
+      "min": "금액은 0보다 커야 합니다.",
+      "insufficient": "잔액이 부족합니다."
     }
   }
 }
