@@ -60,7 +60,7 @@ export default function HelpSubmission() {
   });
 
   React.useLayoutEffect(() => {
-    setTitle?.('Question');
+    setTitle?.('profile:question');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
   }, [setTitle, setHasBackButton, setShowBottomBar]);

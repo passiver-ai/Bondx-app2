@@ -1,0 +1,13 @@
+{
+  "wallet": "Wallet",
+  "deposit": "Deposit",
+  "depositWarning": "Only send {{chain}} assets to this address.",
+  "withdraw": "Withdraw",
+  "withdrawn": "Withdrawn",
+  "withdrawable": "Withdrawable",
+  "locked": "Locked",
+  "lockRemaining": "Lock Remaining",
+  "total": "Total",
+  "network": "Network",
+  "token": "Token"
+}

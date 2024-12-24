@@ -1,0 +1,13 @@
+{
+  "wallet": "지갑",
+  "deposit": "입금",
+  "depositWarning": "이 주소에는 {{chain}} 자산만 보내세요.",
+  "withdraw": "출금",
+  "withdrawn": "출금됨",
+  "withdrawable": "출금 가능",
+  "locked": "잠금됨",
+  "lockRemaining": "남은 잠금",
+  "total": "총합",
+  "network": "네트워크",
+  "token": "토큰"
+}

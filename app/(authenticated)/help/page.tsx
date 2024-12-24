@@ -18,7 +18,7 @@ export default function Help() {
     useAuthenticatedLayoutContext();
 
   React.useLayoutEffect(() => {
-    setTitle?.('Help Center');
+    setTitle?.('profile:helpCenter');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
   }, [setTitle, setHasBackButton, setShowBottomBar]);

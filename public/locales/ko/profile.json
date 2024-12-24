@@ -1,0 +1,16 @@
+{
+  "profile": "프로필",
+  "support": "지원",
+  "settings": "설정",
+  "language": "언어",
+  "question": "질문",
+  "pointFree": "포인트프리",
+  "helpCenter": "고객 지원 센터",
+  "kycVerification": "KYC 인증",
+  "verified": "인증됨",
+  "unverified": "미인증",
+  "userType": {
+    "basic": "기본",
+    "investor": "투자자"
+  }
+}

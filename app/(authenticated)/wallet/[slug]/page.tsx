@@ -9,6 +9,7 @@ import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
 
 import { Button } from '@kit/ui/button';
 import { Heading } from '@kit/ui/heading';
+import { Trans } from '@kit/ui/trans';
 
 export default function WalletDetail() {
   const [sending, setSending] = React.useState(true);
@@ -53,16 +54,22 @@ export default function WalletDetail() {
 
           <div className="grid grid-cols-2 gap-4">
             <Button variant="outline" className="bg-[#f1f5f9]" asChild>
-              <Link href="/wallet/bnb/deposit">Deposit</Link>
+              <Link href="/wallet/bnb/deposit">
+                <Trans i18nKey="wallet:deposit" />
+              </Link>
             </Button>
             <Button variant="outline" className="bg-[#f1f5f9]" asChild>
-              <Link href="/wallet/bnb/withdraw">Withdraw</Link>
+              <Link href="/wallet/bnb/withdraw">
+                <Trans i18nKey="wallet:withdraw" />
+              </Link>
             </Button>
           </div>
         </div>
       </div>
 
-      <Heading level={5}>History</Heading>
+      <Heading level={5}>
+        <Trans i18nKey="common:history" />
+      </Heading>
 
       <div className="mt-2 flex items-center justify-center">
         <div className="w-full">
@@ -70,7 +77,7 @@ export default function WalletDetail() {
             <div className="border-b border-gray-200 py-3">
               <div className="flex items-center justify-between">
                 <span>
-                  Withdraw{' '}
+                  <Trans i18nKey="wallet:withdraw" />{' '}
                   {sending && (
                     <small className="font-semibold text-[#F97316]">
                       Pending...
@@ -88,7 +95,9 @@ export default function WalletDetail() {
           <Link href="/wallet/bnb/transaction/withdraw">
             <div className="border-b border-gray-200 py-3">
               <div className="flex items-center justify-between">
-                <span>Withdraw</span>
+                <span>
+                  <Trans i18nKey="wallet:withdraw" />
+                </span>
                 <span className="text-red-500">-200.2345432</span>
               </div>
               <div className="mt-1 text-sm text-gray-500">
@@ -100,7 +109,9 @@ export default function WalletDetail() {
           <Link href="/wallet/bnb/transaction/withdraw">
             <div className="border-b border-gray-200 py-3">
               <div className="flex items-center justify-between">
-                <span>Deposit</span>
+                <span>
+                  <Trans i18nKey="wallet:deposit" />
+                </span>
                 <span className="text-green-500">+2,000.392839</span>
               </div>
               <div className="mt-1 text-sm text-gray-500">
@@ -112,7 +123,9 @@ export default function WalletDetail() {
           <Link href="/wallet/bnb/transaction/withdraw">
             <div className="border-b border-gray-200 py-3">
               <div className="flex items-center justify-between">
-                <span>Deposit</span>
+                <span>
+                  <Trans i18nKey="wallet:deposit" />
+                </span>
                 <span className="text-green-500">+2,000.392839</span>
               </div>
               <div className="mt-1 text-sm text-gray-500">
@@ -124,7 +137,9 @@ export default function WalletDetail() {
           <Link href="/wallet/bnb/transaction/withdraw">
             <div className="border-b border-gray-200 py-3">
               <div className="flex items-center justify-between">
-                <span>Deposit</span>
+                <span>
+                  <Trans i18nKey="wallet:deposit" />
+                </span>
                 <span className="text-green-500">+2,000.392839</span>
               </div>
               <div className="mt-1 text-sm text-gray-500">
@@ -136,7 +151,9 @@ export default function WalletDetail() {
           <Link href="/wallet/bnb/transaction/withdraw">
             <div className="border-b border-gray-200 py-3">
               <div className="flex items-center justify-between">
-                <span className="text-black">Withdraw</span>
+                <span className="text-black">
+                  <Trans i18nKey="wallet:withdraw" />
+                </span>
                 <span className="text-red-500">-200.2345432</span>
               </div>
               <div className="mt-1 text-sm text-gray-500">
@@ -148,7 +165,9 @@ export default function WalletDetail() {
           <Link href="/wallet/bnb/transaction/withdraw">
             <div className="border-b border-gray-200 py-3">
               <div className="flex items-center justify-between">
-                <span>Withdraw</span>
+                <span>
+                  <Trans i18nKey="wallet:withdraw" />
+                </span>
                 <span className="text-red-500">-200.2345432</span>
               </div>
               <div className="mt-1 text-sm text-gray-500">

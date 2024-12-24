@@ -1,0 +1,16 @@
+{
+  "profile": "Profile",
+  "support": "Support",
+  "settings": "Settings",
+  "language": "Language",
+  "question": "Question",
+  "pointFree": "PointFree",
+  "helpCenter": "Help Center",
+  "kycVerification": "KYC Verification",
+  "verified": "Verified",
+  "unverified": "Unverified",
+  "userType": {
+    "basic": "Basic",
+    "investor": "Investor"
+  }
+}

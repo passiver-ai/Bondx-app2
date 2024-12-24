@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 
 import { useRouter } from 'next-nprogress-bar';
 
+import { Trans } from '@kit/ui/trans';
 import { cn } from '@kit/ui/utils';
 
 import Icon, { type IconProps } from './Icon';
@@ -14,17 +15,17 @@ const tabs = [
   {
     route: '/dashboard',
     icon: 'dashboard',
-    label: 'Dashboard',
+    label: 'dashboard:dashboard',
   },
   {
     route: '/wallet',
     icon: 'wallet',
-    label: 'Wallet',
+    label: 'wallet:wallet',
   },
   {
     route: '/profile',
     icon: 'user-profile',
-    label: 'Profile',
+    label: 'profile:profile',
   },
 ];
 
@@ -58,7 +59,7 @@ const BottomNavigationBar: React.FC = () => {
                     />
                   </div>
                   <div className="font-heading text-sm leading-[20px]">
-                    {tab.label}
+                    <Trans i18nKey={tab.label} />
                   </div>
                 </div>
               </div>

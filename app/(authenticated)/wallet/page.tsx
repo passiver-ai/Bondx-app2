@@ -9,13 +9,14 @@ import Icon from '@/components/Icon';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
 
 import { Heading } from '@kit/ui/heading';
+import { Trans } from '@kit/ui/trans';
 
 export default function Wallet() {
   const { setTitle, setHasBackButton, setShowBottomBar } =
     useAuthenticatedLayoutContext();
 
   React.useLayoutEffect(() => {
-    setTitle?.('Wallet');
+    setTitle?.('wallet:wallet');
     setHasBackButton?.(false);
     setShowBottomBar?.(true);
   }, [setTitle, setHasBackButton, setShowBottomBar]);
@@ -48,7 +49,9 @@ export default function Wallet() {
           </Link>
 
           <div className="flex w-full items-center justify-between rounded-lg bg-[#F8FAFC] px-4 py-2 text-sm">
-            <span>Locked BONDX:</span>
+            <span>
+              <Trans i18nKey="wallet:locked" /> BONDX:
+            </span>
             <span>100</span>
           </div>
         </div>

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
 
 import { Button } from '@kit/ui/button';
+import { Trans } from '@kit/ui/trans';
 
 export default function Deposit() {
   const [isCopied, setCopied] = React.useState(false);
@@ -14,7 +15,7 @@ export default function Deposit() {
     useAuthenticatedLayoutContext();
 
   React.useLayoutEffect(() => {
-    setTitle?.('Deposit');
+    setTitle?.('wallet:deposit');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
   }, [setTitle, setHasBackButton, setShowBottomBar]);
@@ -46,12 +47,17 @@ export default function Deposit() {
       <div className="space-y-4">
         <div role="alert" className="mt-2 rounded-[6px] bg-[#FFF7ED] p-3">
           <p className="text-[16px] font-semibold text-[#EA580C]">
-            Only send BNB Smart Chain assets to this address.
+            <Trans
+              i18nKey="wallet:depositWarning"
+              values={{ chain: 'BNB Smart Chain' }}
+            />
           </p>
         </div>
         <div className="space-y-3 py-2">
           <div className="flex items-center justify-between">
-            <p className="text-sm">Network</p>
+            <p className="text-sm">
+              <Trans i18nKey="wallet:network" />
+            </p>
             <div className="flex items-center gap-[0.5ch] text-right">
               <Image
                 width={26}
@@ -64,7 +70,9 @@ export default function Deposit() {
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <p className="text-sm">Token</p>
+            <p className="text-sm">
+              <Trans i18nKey="wallet:token" />
+            </p>
             <div className="flex items-center gap-[0.5ch] text-right">
               <Image
                 width={26}
@@ -83,7 +91,11 @@ export default function Deposit() {
           </p>
         </div>
         <Button onClick={handleCopy} className="w-full">
-          {isCopied ? 'Copied!' : 'Copy Address'}
+          {isCopied ? (
+            <Trans i18nKey="common:copied" />
+          ) : (
+            <Trans i18nKey="common:copyAddress" />
+          )}
         </Button>
       </div>
     </div>

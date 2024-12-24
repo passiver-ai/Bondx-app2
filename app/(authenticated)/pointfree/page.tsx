@@ -66,7 +66,7 @@ export default function PointFree() {
   );
 
   React.useLayoutEffect(() => {
-    setTitle?.('PointFree');
+    setTitle?.('profile:pointFree');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
 

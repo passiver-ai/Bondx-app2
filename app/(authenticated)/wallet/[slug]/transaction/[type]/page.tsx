@@ -11,7 +11,7 @@ export default function TransactionDetail() {
     useAuthenticatedLayoutContext();
 
   React.useLayoutEffect(() => {
-    setTitle?.('Withdraw');
+    setTitle?.('wallet:withdraw');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
   }, [setTitle, setHasBackButton, setShowBottomBar]);

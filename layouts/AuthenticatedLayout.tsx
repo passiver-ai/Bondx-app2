@@ -2,11 +2,11 @@
 
 import * as React from 'react';
 
-import { useRouter } from 'next-nprogress-bar';
-
 import BottomNavigationBar from '@/components/BottomNavigationBar';
 import Icon from '@/components/Icon';
+import { useRouter } from 'next-nprogress-bar';
 
+import { Trans } from '@kit/ui/trans';
 import { cn } from '@kit/ui/utils';
 
 // Context for AuthenticatedLayout
@@ -95,7 +95,7 @@ const AuthenticatedLayout: React.FC<React.PropsWithChildren> = ({
             hasBackButton ? 'pr-[26px] text-center text-[18px]' : 'text-[24px]',
           )}
         >
-          {title}
+          <Trans i18nKey={title} />
         </div>
       </header>
       <div className={cn('relative', showBottomBar && 'pb-[80px]')}>

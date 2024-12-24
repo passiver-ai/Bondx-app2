@@ -13,12 +13,12 @@ import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
 import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
 } from '@kit/ui/form';
 import { Input } from '@kit/ui/input';
 
@@ -46,7 +46,7 @@ export default function Withdraw() {
     useAuthenticatedLayoutContext();
 
   React.useLayoutEffect(() => {
-    setTitle?.('Withdraw');
+    setTitle?.('wallet:withdraw');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
   }, [setTitle, setHasBackButton, setShowBottomBar]);

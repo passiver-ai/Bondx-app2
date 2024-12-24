@@ -102,7 +102,7 @@ export default function Help() {
   });
 
   React.useLayoutEffect(() => {
-    setTitle?.('KYC Verification');
+    setTitle?.('profile:kycVerification');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
 

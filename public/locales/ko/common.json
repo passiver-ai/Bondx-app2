@@ -1,4 +1,8 @@
 {
+  "more": "더보기",
+  "history": "기록",
+  "copied": "복사됨!",
+  "copyAddress": "주소 복사",
   "form": {
     "email": "이메일",
     "emailPlaceholder": "이메일",

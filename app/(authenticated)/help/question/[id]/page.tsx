@@ -27,7 +27,7 @@ export default function QuestionDetail() {
   );
 
   React.useLayoutEffect(() => {
-    setTitle?.('Question');
+    setTitle?.('profile:question');
     setHasBackButton?.(true);
     setShowBottomBar?.(false);
   }, [setTitle, setHasBackButton, setShowBottomBar]);
