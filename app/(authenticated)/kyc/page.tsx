@@ -53,11 +53,11 @@ const FormSchema = createStepSchema({
     name: z.string().min(1, "common:errors:name:required"),
     residentRegistrationFront: z
       .string()
-      .regex(/^\d+$/, "common:errors:residentRegistrationFront:numeric")
+      // .regex(/^\d+$/, "common:errors:residentRegistrationFront:numeric")
       .min(1, "common:errors:residentRegistrationFront:required"),
     residentRegistrationBack: z
       .string()
-      .regex(/^\d+$/, "common:errors:residentRegistrationBack:numeric")
+      // .regex(/^\d+$/, "common:errors:residentRegistrationBack:numeric")
       .min(1, "common:errors:residentRegistrationBack:required"),
     postalCode: z.string().min(1, "common:errors:postalCode:required"),
     address: z.string().min(1, "common:errors:address:required"),

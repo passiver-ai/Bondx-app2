@@ -35,7 +35,7 @@ export const Phone: React.FC = () => {
 
   return (
     <Form {...form}>
-      <div className={'mt-6 flex flex-col gap-4'}>
+      <div className={'mt-8 flex flex-col gap-4'}>
         <FormField
           name="phone.mobilePhone"
           render={({ field }) => (
@@ -88,9 +88,9 @@ export const Phone: React.FC = () => {
           )}
           <Button
             type="button"
-            disabled={!isStepValid()}
             onClick={handleSendVerificationCode}
             variant={isCodeSent ? 'link' : 'default'}
+            disabled={!isStepValid() || isSendingCode}
           >
             {isSendingCode && <Loader2 className="mr-1 animate-spin" />}
             {isCodeSent ? (

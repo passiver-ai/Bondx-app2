@@ -41,7 +41,7 @@ export const IDCard: React.FC = () => {
   return (
     <Form {...form}>
       <div className={'mt-6 flex flex-col'}>
-        <Heading level={5} className="mb-1 mt-3 w-full text-center">
+        <Heading level={5} className="mb-2 mt-3 w-full text-center text-[#475569]">
           <Trans i18nKey="profile:kyc:id:description" />
         </Heading>
         <FormField
@@ -59,10 +59,8 @@ export const IDCard: React.FC = () => {
                   />
                   <div className="space-y-4">
                     <div
-                      className="h-48 w-full overflow-hidden rounded-lg border bg-gray-100"
+                      className="h-48 w-full overflow-hidden rounded-lg border bg-[#F8FAFC] bg-contain bg-center bg-no-repeat"
                       style={{
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
                         backgroundImage: `url(${preview ?? '/images/kyc-placeholder.jpg'})`,
                       }}
                     />
