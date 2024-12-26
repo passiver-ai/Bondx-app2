@@ -10,6 +10,7 @@ import type { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 
 import { Button } from '@kit/ui/button';
+import { Trans } from '@kit/ui/trans';
 import { cn } from '@kit/ui/utils';
 
 export default function Help() {
@@ -43,7 +44,8 @@ export default function Help() {
               <div className="flex">
                 <p className="flex-1">{question.title}</p>
                 <span className="text-[#64748B]">
-                  {question.status}{' '}
+                  {/* {question.status} */}
+                  <Trans i18nKey="common:pending" />{' '}
                   <Icon
                     name="chevron-right"
                     className="inline-block align-[-0.185em] text-xl"
@@ -59,11 +61,15 @@ export default function Help() {
             className="inline-block text-[36px]"
             name="clipboard-signature"
           />
-          <p>There are no inquiries.</p>
+          <p>
+            <Trans i18nKey="profile:messages:helpCenter:emptyInquiries" />
+          </p>
         </div>
       )}
       <Button className="w-full" asChild>
-        <Link href="/help/submission">Submit Question</Link>
+        <Link href="/help/submission">
+          <Trans i18nKey="profile:submitQuestion" />
+        </Link>
       </Button>
     </div>
   );

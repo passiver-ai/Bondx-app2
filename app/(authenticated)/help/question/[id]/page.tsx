@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 
 import { Badge } from '@kit/ui/badge';
 import { Heading } from '@kit/ui/heading';
+import { Trans } from '@kit/ui/trans';
 import { cn } from '@kit/ui/utils';
 
 export default function QuestionDetail() {
@@ -60,7 +61,7 @@ export default function QuestionDetail() {
                 name="message-circle"
                 className="inline-block align-[-0.175em]"
               />{' '}
-              Answered
+              <Trans i18nKey="profile:answered" />
             </span>
             <hr className="my-2" />
             <div className="space-y-3">

@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next-nprogress-bar';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import * as z from 'zod';
 
@@ -31,6 +32,7 @@ import {
   SelectValue,
 } from '@kit/ui/select';
 import { Textarea } from '@kit/ui/textarea';
+import { Trans } from '@kit/ui/trans';
 
 const formSchema = z.object({
   category: z.string(),
@@ -43,6 +45,7 @@ type QuestionFormInputs = z.infer<typeof formSchema>;
 
 export default function HelpSubmission() {
   const router = useRouter();
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   const { loading } = useSelector((state: RootState) => state.question);
   const [files, setFiles] = React.useState<File[] | null>(null);
@@ -56,7 +59,7 @@ export default function HelpSubmission() {
       category: '',
       title: '',
       description: '',
-    }
+    },
   });
 
   React.useLayoutEffect(() => {
@@ -102,22 +105,36 @@ export default function HelpSubmission() {
             name="category"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Category</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:category" />
+                </FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a Category" />
+                      <SelectValue
+                        placeholder={t('common:form:categoryPlaceholder')}
+                      />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="normal">Normal</SelectItem>
-                    <SelectItem value="invest">Invest</SelectItem>
-                    <SelectItem value="coin">Coin</SelectItem>
-                    <SelectItem value="withdrawal">Withdrawal</SelectItem>
-                    <SelectItem value="wallet">Wallet</SelectItem>
+                    <SelectItem value="normal">
+                      <Trans i18nKey="common:form:questionCategory:normal" />
+                    </SelectItem>
+                    <SelectItem value="invest">
+                      <Trans i18nKey="common:form:questionCategory:invest" />
+                    </SelectItem>
+                    <SelectItem value="coin">
+                      <Trans i18nKey="common:form:questionCategory:coin" />
+                    </SelectItem>
+                    <SelectItem value="withdrawal">
+                      <Trans i18nKey="common:form:questionCategory:withdrawal" />
+                    </SelectItem>
+                    <SelectItem value="wallet">
+                      <Trans i18nKey="common:form:questionCategory:wallet" />
+                    </SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -130,11 +147,16 @@ export default function HelpSubmission() {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Title</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:title" />
+                </FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter Title" type="" {...field} />
+                  <Input
+                    placeholder={t('common:form:titlePlaceholder')}
+                    type="text"
+                    {...field}
+                  />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -144,16 +166,17 @@ export default function HelpSubmission() {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:description" />
+                </FormLabel>
                 <FormControl>
                   <Textarea
                     rows={6}
                     className="resize-none"
-                    placeholder="Type your message here"
+                    placeholder={t('common:form:descriptionPlaceholder')}
                     {...field}
                   />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -165,7 +188,9 @@ export default function HelpSubmission() {
               render={({ field }) => (
                 <FormItem>
                   <Button variant="outline" className="cursor-pointer" asChild>
-                    <FormLabel>Attached Files</FormLabel>
+                    <FormLabel>
+                      <Trans i18nKey="common:form:attachment" />
+                    </FormLabel>
                   </Button>
 
                   <FormControl>
@@ -220,7 +245,7 @@ export default function HelpSubmission() {
             {(form.formState.isSubmitting || loading) && (
               <Loader2 className="mr-1 animate-spin" />
             )}
-            Submit
+            <Trans i18nKey="common:submit" />
           </Button>
         </form>
       </Form>

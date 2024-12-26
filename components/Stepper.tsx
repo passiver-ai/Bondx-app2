@@ -60,7 +60,7 @@ export function Stepper(props: {
               </span>
             </div>
             <If condition={isNumberVariant}>
-              <span className="absolute text-sm text-[#94A3B8] top-[85%]">{label}</span>
+              <span className="absolute text-sm text-[#94A3B8] top-[85%] whitespace-nowrap">{label}</span>
             </If>
           </div>
 

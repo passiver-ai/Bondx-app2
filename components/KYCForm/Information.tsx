@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import { Button } from '@kit/ui/button';
 import {
   Form,
@@ -9,13 +11,14 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@kit/ui/form';
 import { Input } from '@kit/ui/input';
 import { useMultiStepFormContext } from '@kit/ui/multi-step-form';
-
-import FormMessage from '../FormMessage';
+import { Trans } from '@kit/ui/trans';
 
 export const Information: React.FC = () => {
+  const { t } = useTranslation();
   const { form, nextStep, isStepValid } = useMultiStepFormContext();
 
   return (
@@ -25,11 +28,13 @@ export const Information: React.FC = () => {
           name="information.email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>E-mail</FormLabel>
+              <FormLabel>
+                <Trans i18nKey="common:form:email" />
+              </FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Enter E-mail Address"
                   type="email"
+                  placeholder={t('common:form:emailPlaceholder')}
                   {...field}
                 />
               </FormControl>
@@ -42,9 +47,15 @@ export const Information: React.FC = () => {
           name="information.name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>
+                <Trans i18nKey="common:form:name" />
+              </FormLabel>
               <FormControl>
-                <Input placeholder="Enter Name" type="text" {...field} />
+                <Input
+                  type="text"
+                  placeholder={t('common:form:namePlaceholder')}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -56,9 +67,17 @@ export const Information: React.FC = () => {
           name="information.residentRegistrationFront"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Resident Registration Number (Front)</FormLabel>
+              <FormLabel>
+                <Trans i18nKey="common:form:residentRegistrationNumberFront" />
+              </FormLabel>
               <FormControl>
-                <Input placeholder="Enter Number" type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder={t(
+                    'common:form:residentRegistrationNumberFrontPlaceholder',
+                  )}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -70,9 +89,17 @@ export const Information: React.FC = () => {
           name="information.residentRegistrationBack"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Resident Registration Number (Back)</FormLabel>
+              <FormLabel>
+                <Trans i18nKey="common:form:residentRegistrationNumberFront" />
+              </FormLabel>
               <FormControl>
-                <Input placeholder="Enter Number" type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder={t(
+                    'common:form:residentRegistrationNumberFrontPlaceholder',
+                  )}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -84,15 +111,19 @@ export const Information: React.FC = () => {
           name="information.postalCode"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Postal Code</FormLabel>
+              <FormLabel>
+                <Trans i18nKey="common:form:postalCode" />
+              </FormLabel>
               <FormControl>
                 <div className="flex gap-2">
                   <Input
-                    placeholder="Enter Postal Code"
                     type="number"
+                    placeholder={t('common:form:postalCodePlaceholder')}
                     {...field}
                   />
-                  <Button type="button">Find Address</Button>
+                  <Button type="button">
+                    <Trans i18nKey="common:findAddress" />
+                  </Button>
                 </div>
               </FormControl>
               <FormMessage />
@@ -105,9 +136,15 @@ export const Information: React.FC = () => {
           name="information.address"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Address</FormLabel>
+              <FormLabel>
+                <Trans i18nKey="common:form:address" />
+              </FormLabel>
               <FormControl>
-                <Input type="text" placeholder="Enter Address" {...field} />
+                <Input
+                  type="text"
+                  placeholder={t('common:form:addressPlaceholder')}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -119,11 +156,14 @@ export const Information: React.FC = () => {
           name="information.detailedAddress"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Detailed Address (Optional)</FormLabel>
+              <FormLabel>
+                <Trans i18nKey="common:form:detailedAddress" /> (
+                <Trans i18nKey="common:optional" />)
+              </FormLabel>
               <FormControl>
                 <Input
                   type="text"
-                  placeholder="Enter Detailed Address"
+                  placeholder={t('common:form:detailedAddressPlaceholder')}
                   {...field}
                 />
               </FormControl>
@@ -133,7 +173,7 @@ export const Information: React.FC = () => {
         />
 
         <Button onClick={nextStep} disabled={!isStepValid()} className="w-full">
-          Next
+          <Trans i18nKey="common:next" />
         </Button>
       </div>
     </Form>

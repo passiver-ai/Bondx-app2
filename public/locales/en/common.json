@@ -1,15 +1,24 @@
 {
   "max": "Max",
   "more": "More",
+  "next": "Next",
+  "optional": "Optional",
+  "submit": "Submit",
   "history": "History",
   "copied": "Copied!",
   "confirm": "Confirm",
   "continue": "Continue",
+  "success": "Success",
   "completed": "Completed",
   "copyAddress": "Copy Address",
   "available": "Available",
   "pending": "Pending",
+  "verify": "Verify",
+  "retry": "Retry",
   "processing": "Processing",
+  "findAddress": "Find Address",
+  "sendVerificationCode": "Send Verification Code",
+  "resendVerificationCode": "Resend Verification Code",
   "form": {
     "email": "E-mail",
     "emailPlaceholder": "E-mail",
@@ -21,7 +30,41 @@
     "walletAddress": "Address",
     "walletAddressPlaceholder": "Enter Address",
     "amount": "Amount",
-    "amountPlaceholder": "Enter Amount"
+    "amountPlaceholder": "Enter Amount",
+    "category": "Category",
+    "categoryPlaceholder": "Select Category",
+    "title": "Title",
+    "titlePlaceholder": "Enter Title",
+    "description": "Description",
+    "descriptionPlaceholder": "Enter your message here",
+    "attachment": "Attached Files",
+    "pointFreeId": "PointFree ID",
+    "pointFreeIdPlaceholder": "Enter PointFree ID",
+    "pointFreeIdDescription": "Please enter your PointFree ID to transfer PointFree points.",
+    "idCard": "ID",
+    "name": "Name",
+    "namePlaceholder": "Enter Name",
+    "residentRegistrationNumberFront": "Resident Registration Card (Front)",
+    "residentRegistrationNumberFrontPlaceholder": "Enter Number",
+    "residentRegistrationNumberBack": "Resident Registration Card (Back)",
+    "residentRegistrationNumberBackPlaceholder": "Enter Number",
+    "postalCode": "Postal Code",
+    "postalCodePlaceholder": "Enter Postal Code",
+    "address": "Address",
+    "addressPlaceholder": "Enter Address",
+    "detailedAddress": "Detailed Address",
+    "detailedAddressPlaceholder": "Enter Detailed Address",
+    "mobilePhone": "Mobile Phone",
+    "mobilePhonePlaceholder": "Enter Mobile Phone",
+    "verificationCode": "Verification Code",
+    "verificationCodePlaceholder": "Enter Verification Code",
+    "questionCategory": {
+      "normal": "Normal",
+      "invest": "Invest",
+      "coin": "Coin",
+      "withdrawal": "Withdrawal",
+      "wallet": "Wallet"
+    }
   },
   "errors": {
     "email": {
@@ -45,6 +88,32 @@
       "required": "Amount is required",
       "min": "Amount must be greater than 0",
       "insufficient": "Insufficient balance"
+    },
+    "idCard": {
+      "required": "An image is required.",
+      "invalid": "File must be an image and less than 5MB."
+    },
+    "name": {
+      "required": "Name is required."
+    },
+    "residentRegistrationFront": {
+      "required": "Front of the resident registration card is required.",
+      "numeric": "The resident registration card number must be numeric."
+    },
+    "residentRegistrationBack": {
+      "required": "Back of the resident registration card is required.",
+      "numeric": "The resident registration card number must be numeric."
+    },
+    "postalCode": {
+      "required": "Postal code is required.",
+      "numeric": "Postal code must be numeric."
+    },
+    "address": {
+      "required": "Address is required."
+    },
+    "mobilePhone": {
+      "required": "Mobile phone number is required.",
+      "numeric": "Mobile phone number must be numeric."
     }
   }
 }

@@ -16,7 +16,15 @@ interface QuestionState {
 }
 
 const initialState: QuestionState = {
-  questions: [],
+  questions: [
+    // {
+    //   id: '1',
+    //   category: 'General',
+    //   title: 'How do I reset my password?',
+    //   description: 'I forgot my password and need to reset it.',
+    //   status: 'Pending',
+    // }
+  ],
   loading: false,
   error: null,
 };

@@ -3,12 +3,17 @@
 import * as React from 'react';
 
 import { Button } from '@kit/ui/button';
-import { Form, FormControl, FormField, FormItem } from '@kit/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
 import { useMultiStepFormContext } from '@kit/ui/multi-step-form';
-
-import FormMessage from '../FormMessage';
+import { Trans } from '@kit/ui/trans';
 
 export const IDCard: React.FC = () => {
   const { form, nextStep, isStepValid } = useMultiStepFormContext();
@@ -37,7 +42,7 @@ export const IDCard: React.FC = () => {
     <Form {...form}>
       <div className={'mt-6 flex flex-col'}>
         <Heading level={5} className="mb-1 mt-3 w-full text-center">
-          Take a photo of your ID
+          <Trans i18nKey="profile:kyc:id:description" />
         </Heading>
         <FormField
           name="id.image"
@@ -70,7 +75,11 @@ export const IDCard: React.FC = () => {
                         variant={!preview ? 'default' : 'outline'}
                       >
                         <label htmlFor="file-input">
-                          {preview ? 'Retry' : 'Take a photo'}
+                          {preview ? (
+                            <Trans i18nKey="common:retry" />
+                          ) : (
+                            <Trans i18nKey="profile:kyc:id:takePhoto" />
+                          )}
                         </label>
                       </Button>
                       {preview && (
@@ -79,7 +88,7 @@ export const IDCard: React.FC = () => {
                           className="flex-1"
                           disabled={!isStepValid()}
                         >
-                          Continue
+                          <Trans i18nKey="common:continue" />
                         </Button>
                       )}
                     </div>

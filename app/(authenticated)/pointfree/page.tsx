@@ -19,6 +19,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next-nprogress-bar';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import { Button } from '@kit/ui/button';
@@ -32,6 +33,7 @@ import {
 } from '@kit/ui/form';
 import { Heading } from '@kit/ui/heading';
 import { Input } from '@kit/ui/input';
+import { Trans } from '@kit/ui/trans';
 import { cn } from '@kit/ui/utils';
 
 // Define the Zod schema for form validation
@@ -44,6 +46,7 @@ type FormInputs = z.infer<typeof formSchema>;
 
 export default function PointFree() {
   const router = useRouter();
+  const { t } = useTranslation();
   const searchParams = useSearchParams();
   const rootRef = React.useRef<HTMLElement>(null);
   const [isTransferDialogOpen, setTransferDialogOpen] = React.useState(false);
@@ -110,7 +113,7 @@ export default function PointFree() {
         <div className="w-full rounded-lg bg-[#F8FAFC] p-3 text-[#334155]">
           <span>
             <Icon name="send" className="inline-block align-[-0.175em]" />{' '}
-            Transfer points to PointFree
+            <Trans i18nKey="profile:pointFreeHeading" />
           </span>
           <hr className="my-2" />
           <div className="space-y-1">
@@ -127,12 +130,14 @@ export default function PointFree() {
               name="id"
               render={({ field, fieldState }) => (
                 <FormItem>
-                  <FormLabel>PointFree ID</FormLabel>
+                  <FormLabel>
+                    <Trans i18nKey="common:form:pointFreeId" />
+                  </FormLabel>
                   <FormControl>
                     <div className="flex gap-2">
                       <Input
-                        placeholder="Enter PointFree ID"
-                        type=""
+                        type="text"
+                        placeholder={t("common:form:pointFreeIdPlaceholder")}
                         {...field}
                       />
                       {!isVerified && (
@@ -147,15 +152,14 @@ export default function PointFree() {
                           {form.formState.isSubmitting && (
                             <Loader2 className="mr-1 animate-spin" />
                           )}
-                          Verify
+                          <Trans i18nKey="common:verify" />
                         </Button>
                       )}
                     </div>
                   </FormControl>
                   {!fieldState.invalid && !isVerified && (
                     <FormDescription>
-                      Please enter your Pointfree ID to transfer Pointfree
-                      points.
+                      <Trans i18nKey="common:form:pointFreeIdDescription" />
                     </FormDescription>
                   )}
                   <FormMessage />
@@ -175,14 +179,16 @@ export default function PointFree() {
                 {form.formState.isSubmitting && (
                   <Loader2 className="mr-1 animate-spin" />
                 )}
-                Transfer Point
+                <Trans i18nKey="profile:transferPoint" />
               </Button>
             )}
           </form>
         </Form>
 
         <div>
-          <Heading level={5}>History</Heading>
+          <Heading level={5}>
+            <Trans i18nKey={'common:history'} />
+          </Heading>
 
           <div className="w-full border-b border-gray-200 py-3">
             <span className="text-sm text-[#64748B]">24.12.05</span>

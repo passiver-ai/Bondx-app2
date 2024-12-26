@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 import { Loader2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '@kit/ui/button';
 import {
@@ -11,14 +12,16 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@kit/ui/form';
 import { useMultiStepFormContext } from '@kit/ui/multi-step-form';
+import { Trans } from '@kit/ui/trans';
 
-import FormMessage from '../FormMessage';
 import OTPInput from '../OTPInput';
 import { PhoneInput } from '../PhoneInput';
 
 export const Phone: React.FC = () => {
+  const { t } = useTranslation();
   const [isCodeSent, setCodeSent] = React.useState(false);
   const [isSendingCode, setSendingCode] = React.useState(false);
   const { form, isStepValid } = useMultiStepFormContext();
@@ -37,10 +40,12 @@ export const Phone: React.FC = () => {
           name="phone.mobilePhone"
           render={({ field }) => (
             <FormItem className="flex flex-col items-start">
-              <FormLabel>Mobile Phone</FormLabel>
+              <FormLabel>
+                <Trans i18nKey="common:form:mobilePhone" />
+              </FormLabel>
               <FormControl className="w-full">
                 <PhoneInput
-                  placeholder="Enter Mobile Phone"
+                  placeholder={t('common:form:mobilePhonePlaceholder')}
                   {...field}
                   defaultCountry="KR"
                 />
@@ -54,9 +59,14 @@ export const Phone: React.FC = () => {
             name="phone.verificationCode"
             render={({ field }) => (
               <FormItem className="flex flex-col items-start">
-                <FormLabel>Verification code</FormLabel>
+                <FormLabel>
+                  <Trans i18nKey="common:form:verificationCode" />
+                </FormLabel>
                 <FormControl className="w-full">
-                  <OTPInput placeholder="Enter Verification Code" {...field} />
+                  <OTPInput
+                    placeholder={t('common:form:verificationCodePlaceholder')}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -73,7 +83,7 @@ export const Phone: React.FC = () => {
               {form.formState.isSubmitting && (
                 <Loader2 className="mr-1 animate-spin" />
               )}
-              Verify
+              <Trans i18nKey="common:verify" />
             </Button>
           )}
           <Button
@@ -83,7 +93,11 @@ export const Phone: React.FC = () => {
             variant={isCodeSent ? 'link' : 'default'}
           >
             {isSendingCode && <Loader2 className="mr-1 animate-spin" />}
-            {isCodeSent ? 'Resend Verification Code' : 'Send Verification Code'}
+            {isCodeSent ? (
+              <Trans i18nKey="common:resendVerificationCode" />
+            ) : (
+              <Trans i18nKey="common:sendVerificationCode" />
+            )}
           </Button>
         </div>
       </div>

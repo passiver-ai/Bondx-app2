@@ -17,6 +17,7 @@ import { Stepper } from '@/components/Stepper';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import { Heading } from '@kit/ui/heading';
@@ -27,6 +28,7 @@ import {
   MultiStepFormStep,
   createStepSchema,
 } from '@kit/ui/multi-step-form';
+import { Trans } from '@kit/ui/trans';
 import { cn } from '@kit/ui/utils';
 
 /* eslint-disable @typescript-eslint/no-unsafe-call */
@@ -35,34 +37,34 @@ const FormSchema = createStepSchema({
   id: z.object({
     image: z
       .any()
-      .refine((file) => file?.[0], 'An image is required.')
+      .refine((file) => file?.[0], 'common:errors:idCard:required')
       .refine(
         (file) =>
           file?.[0]?.type.startsWith('image/') &&
           file?.[0]?.size <= 5 * 1024 * 1024, // 5MB limit
-        'File must be an image and less than 5MB',
+        'common:errors:idCard:invalid',
       ),
   }),
   information: z.object({
     email: z
       .string()
-      .email('Email must be a valid email address')
-      .min(1, 'Email is required'),
-    name: z.string().min(1, 'Name is required'),
+      .email("common:errors:email:invalid")
+      .min(1, "common:errors:email:required"),
+    name: z.string().min(1, "common:errors:name:required"),
     residentRegistrationFront: z
       .string()
-      .regex(/^\d+$/, 'Must be numeric')
-      .length(6, 'Must be exactly 6 digits'),
+      .regex(/^\d+$/, "common:errors:residentRegistrationFront:numeric")
+      .min(1, "common:errors:residentRegistrationFront:required"),
     residentRegistrationBack: z
       .string()
-      .regex(/^\d+$/, 'Must be numeric')
-      .length(7, 'Must be exactly 7 digits'),
-    postalCode: z.string().min(1, 'Postal Code is required'),
-    address: z.string().min(1, 'Address is required'),
+      .regex(/^\d+$/, "common:errors:residentRegistrationBack:numeric")
+      .min(1, "common:errors:residentRegistrationBack:required"),
+    postalCode: z.string().min(1, "common:errors:postalCode:required"),
+    address: z.string().min(1, "common:errors:address:required"),
     detailedAddress: z.string().optional(),
   }),
   phone: z.object({
-    mobilePhone: z.string().min(1, 'Mobile phone is required'),
+    mobilePhone: z.string().min(1, "common:errors:mobilePhone:required"),
     verificationCode: z.string().optional(),
   }),
 });
@@ -70,6 +72,7 @@ const FormSchema = createStepSchema({
 type FormValues = z.infer<typeof FormSchema>;
 
 export default function Help() {
+  const { t } = useTranslation();
   const rootRef = React.useRef<HTMLElement>(null);
   const [isSubmitted, setSubmitted] = React.useState(false);
   const [isVerificationDialogOpen, setVerificationDialogOpen] =
@@ -132,16 +135,21 @@ export default function Help() {
           <Stepper
             currentStep={2}
             variant={'numbers'}
-            steps={['ID', 'Information', 'Phone']}
+            steps={[
+              t('profile:kyc:id:title'),
+              t('profile:kyc:information:title'),
+              t('profile:kyc:phone:title'),
+            ]}
           />
 
-          <div className="mt-8 w-full rounded-lg bg-[#F8FAFC] pb-3 pt-5 text-center text-[#334155] space-y-2">
-            <Icon name="file-check" className="text-[36px] inline-block" />
-            <Heading level={4}>Pending...</Heading>
+          <div className="mt-8 w-full space-y-2 rounded-lg bg-[#F8FAFC] pb-3 pt-5 text-center text-[#334155]">
+            <Icon name="file-check" className="inline-block text-[36px]" />
+            <Heading level={4}>
+              <Trans i18nKey="common:pending" />
+              ...
+            </Heading>
             <p>
-              The review process takes
-              <br />
-              1-3 business days.
+              <Trans i18nKey="profile:messages:kyc:pendingReview" />
             </p>
           </div>
         </>
@@ -152,7 +160,11 @@ export default function Help() {
               {({ currentStepIndex }) => (
                 <Stepper
                   variant={'numbers'}
-                  steps={['ID', 'Information', 'Phone']}
+                  steps={[
+                    t('profile:kyc:id:title'),
+                    t('profile:kyc:information:title'),
+                    t('profile:kyc:phone:title'),
+                  ]}
                   currentStep={currentStepIndex}
                 />
               )}
@@ -182,9 +194,11 @@ export default function Help() {
             <div className="flex justify-center">
               <Icon name="check-circle" className="text-[40px]" />
             </div>
-            <AlertDialogTitle className="text-center">Success</AlertDialogTitle>
+            <AlertDialogTitle className="text-center">
+              <Trans i18nKey="common:success" />
+            </AlertDialogTitle>
             <AlertDialogDescription className="text-center">
-              Mobile Phone verification completed successfully.
+              <Trans i18nKey="profile:messages:kyc:mobilePhoneVerified" />
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -192,7 +206,7 @@ export default function Help() {
               className="w-full"
               buttonProps={{ variant: 'outline' }}
             >
-              Confirm
+              <Trans i18nKey="common:confirm" />
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
