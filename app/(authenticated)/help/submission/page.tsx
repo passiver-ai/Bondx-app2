@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 
-import FormMessage from '@/components/FormMessage';
 import Icon from '@/components/Icon';
 import { useAuthenticatedLayoutContext } from '@/layouts/AuthenticatedLayout';
 import type { AppDispatch, RootState } from '@/store';
@@ -22,6 +21,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@kit/ui/form';
 import { Input } from '@kit/ui/input';
 import {
@@ -35,9 +35,9 @@ import { Textarea } from '@kit/ui/textarea';
 import { Trans } from '@kit/ui/trans';
 
 const formSchema = z.object({
-  category: z.string(),
-  title: z.string(),
-  description: z.string(),
+  category: z.string().min(1, 'common:errors:category:required'),
+  title: z.string().min(1, 'common:errors:title:required'),
+  description: z.string().min(1, 'common:errors:description:required'),
 });
 
 // Infer the form data type from the schema
