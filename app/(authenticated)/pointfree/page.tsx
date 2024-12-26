@@ -36,12 +36,10 @@ import { Input } from '@kit/ui/input';
 import { Trans } from '@kit/ui/trans';
 import { cn } from '@kit/ui/utils';
 
-// Define the Zod schema for form validation
 const formSchema = z.object({
   id: z.string().min(1, 'Invalid PointFree ID. Please try again.'),
 });
 
-// Infer the form data type from the schema
 type FormInputs = z.infer<typeof formSchema>;
 
 export default function PointFree() {
@@ -137,7 +135,7 @@ export default function PointFree() {
                     <div className="flex gap-2">
                       <Input
                         type="text"
-                        placeholder={t("common:form:pointFreeIdPlaceholder")}
+                        placeholder={t('common:form:pointFreeIdPlaceholder')}
                         {...field}
                       />
                       {!isVerified && (
@@ -225,10 +223,10 @@ export default function PointFree() {
         >
           <AlertDialogHeader>
             <div className="flex justify-center">
-              <Icon name="send" className="text-[40px]" />
+              <Icon name="send" className="text-[40px] text-[#94A3B8]" />
             </div>
-            <AlertDialogTitle className="text-center">
-              Transfer points to PointFree
+            <AlertDialogTitle className="text-center text-[#334155]">
+              <Trans i18nKey="profile:messages:pointFree:transferAlert" />
             </AlertDialogTitle>
             <AlertDialogDescription>
               <span
@@ -246,7 +244,7 @@ export default function PointFree() {
               className="w-full"
               buttonProps={{ variant: 'outline' }}
             >
-              Transfer
+              <Trans i18nKey="common:transfer" />
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -263,15 +261,15 @@ export default function PointFree() {
             <div className="flex justify-center">
               <Icon name="check-circle" className="text-[40px]" />
             </div>
-            <AlertDialogTitle className="text-center">Success</AlertDialogTitle>
+            <AlertDialogTitle className="text-center">
+              <Trans i18nKey="common:success" />
+            </AlertDialogTitle>
             <AlertDialogDescription>
               <span
                 role="alert"
                 className="block rounded-[6px] bg-[#F8FAFC] px-6 py-3 text-center text-[16px] font-semibold text-[#475569]"
               >
-                PointFree ID registration
-                <br />
-                completed successfully.
+                <Trans i18nKey="profile:messages:pointFree:registrationSuccess" />
               </span>
             </AlertDialogDescription>
           </AlertDialogHeader>
@@ -280,7 +278,7 @@ export default function PointFree() {
               className="w-full"
               buttonProps={{ variant: 'outline' }}
             >
-              Confirm
+              <Trans i18nKey="common:confirm" />
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

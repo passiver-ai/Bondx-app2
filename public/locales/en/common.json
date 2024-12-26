@@ -3,6 +3,7 @@
   "more": "More",
   "next": "Next",
   "optional": "Optional",
+  "transfer": "Transfer",
   "submit": "Submit",
   "history": "History",
   "copied": "Copied!",
@@ -114,6 +115,15 @@
     "mobilePhone": {
       "required": "Mobile phone number is required.",
       "numeric": "Mobile phone number must be numeric."
+    },
+    "category": {
+      "required": "Category is required."
+    },
+    "title": {
+      "required": "Title is required."
+    },
+    "description": {
+      "required": "Description is required."
     }
   }
 }

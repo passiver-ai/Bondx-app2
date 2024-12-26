@@ -37,6 +37,10 @@
     "kyc": {
       "pendingReview": "검토 과정은 <br /> 영업일 기준 1-3일이 소요됩니다.",
       "mobilePhoneVerified": "휴대폰 인증이 성공적으로 완료되었습니다."
+    },
+    "pointFree": {
+      "transferAlert": "PointFree로 포인트를 이체합니다.",
+      "registrationSuccess": "PointFree ID 등록이 <br /> 성공적으로 완료되었습니다."
     }
   }
 }

@@ -3,6 +3,7 @@
   "more": "더보기",
   "next": "다음",
   "optional": "선택 사항",
+  "transfer": "이체",
   "submit": "제출",
   "history": "기록",
   "copied": "복사됨!",
@@ -114,6 +115,15 @@
     "mobilePhone": {
       "required": "휴대폰 번호는 필수입니다.",
       "numeric": "휴대폰 번호는 숫자여야 합니다."
+    },
+    "category": {
+      "required": "Category is required."
+    },
+    "title": {
+      "required": "Title is required."
+    },
+    "description": {
+      "required": "Description is required."
     }
   }
 }

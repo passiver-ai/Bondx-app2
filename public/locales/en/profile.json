@@ -37,6 +37,10 @@
     "kyc": {
       "pendingReview": "The review process takes <br /> 1-3 business days.",
       "mobilePhoneVerified": "Mobile Phone verification completed successfully."
+    },
+    "pointFree": {
+      "transferAlert": "Transfer points to PointFree.",
+      "registrationSuccess": "PointFree ID registration <br /> completed successfully."
     }
   }
 }
