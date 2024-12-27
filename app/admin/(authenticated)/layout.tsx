@@ -8,14 +8,16 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic';
 
-export default function AdminLayout(props: React.PropsWithChildren) {
+export default function AdminAuthenticatedLayout({
+  children,
+}: React.PropsWithChildren) {
   return (
-    <Page style={'sidebar'}>
+    <Page style="sidebar">
       <PageNavigation>
         <AdminSidebar />
       </PageNavigation>
-      
-      {props.children}
+
+      {children}
     </Page>
   );
 }
