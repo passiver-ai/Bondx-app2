@@ -21,7 +21,10 @@
   "dependencies": {
     "@edge-csrf/nextjs": "2.5.3-cloudflare-rc1",
     "@hookform/resolvers": "^3.9.1",
+    "@kit/accounts": "workspace:*",
+    "@kit/admin": "workspace:*",
     "@kit/i18n": "workspace:*",
+    "@kit/monitoring": "workspace:*",
     "@kit/next": "workspace:*",
     "@kit/shared": "workspace:*",
     "@kit/ui": "workspace:*",
