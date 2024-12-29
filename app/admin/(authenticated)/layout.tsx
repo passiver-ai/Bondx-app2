@@ -1,6 +1,6 @@
-import { Page, PageNavigation } from '@kit/ui/page';
+import { AdminSidebar } from '@/components/AdminSidebar';
 
-import { AdminSidebar } from '~/admin/_components/admin-sidebar';
+import { Page, PageNavigation } from '@kit/ui/page';
 
 export const metadata = {
   title: `Admin`,

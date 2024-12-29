@@ -20,6 +20,7 @@
   "findAddress": "주소 찾기",
   "sendVerificationCode": "인증 코드 보내기",
   "resendVerificationCode": "인증 코드 재전송",
+  "pageOfPages": "Item {{current}} to {{next}} Total {{total}}",
   "form": {
     "email": "이메일",
     "emailPlaceholder": "이메일",

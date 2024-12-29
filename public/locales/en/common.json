@@ -20,6 +20,7 @@
   "findAddress": "Find Address",
   "sendVerificationCode": "Send Verification Code",
   "resendVerificationCode": "Resend Verification Code",
+  "pageOfPages": "Item {{current}} to {{next}} Total {{total}}",
   "form": {
     "email": "E-mail",
     "emailPlaceholder": "E-mail",
