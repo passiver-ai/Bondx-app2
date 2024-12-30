@@ -49,42 +49,46 @@ export default function CustomerDetailPage() {
     <>
       <PageHeader title="고객 센터 상세페이지" />
       <PageBody>
-        <Heading level={6}>질문 정보</Heading>
-        <section className="mt-2 rounded-sm border">
+        <Heading level={6} className="mb-2">
+          질문 정보
+        </Heading>
+        <section className="rounded-sm border">
           <Table>
             <TableBody>
               <TableRow>
-                <TableCell className="border-r align-top font-bold">
+                <TableCell className="w-[180px] border-r align-top font-bold">
                   날짜
                 </TableCell>
                 <TableCell>{inquiry.date}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="border-r align-top font-bold">
+                <TableCell className="w-[180px] border-r align-top font-bold">
                   이메일 계정
                 </TableCell>
                 <TableCell>{inquiry.email}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="border-r align-top font-bold">
+                <TableCell className="w-[180px] border-r align-top font-bold">
                   카테고리
                 </TableCell>
                 <TableCell>{inquiry.category}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="border-r align-top font-bold">
+                <TableCell className="w-[180px] border-r align-top font-bold">
                   문의 제목
                 </TableCell>
                 <TableCell>{inquiry.title}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="border-r align-top font-bold">
+                <TableCell className="w-[180px] border-r align-top font-bold">
                   문의 내용
                 </TableCell>
-                <TableCell className="whitespace-pre-line">{inquiry.content}</TableCell>
+                <TableCell className="whitespace-pre-line">
+                  {inquiry.content}
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="border-r align-top font-bold">
+                <TableCell className="w-[180px] border-r align-top font-bold">
                   첨부 파일
                 </TableCell>
                 <TableCell>

@@ -59,8 +59,8 @@ export function AdminSidebar() {
                 </SidebarMenuButton>
               </SidebarMenu>
               <SidebarMenu>
-                <SidebarMenuButton isActive={path === '/admin'} asChild>
-                  <Link className={'flex gap-2.5'} href={'/admin'}>
+                <SidebarMenuButton isActive={path === '/admin/pointfree'} asChild>
+                  <Link className={'flex gap-2.5'} href={'/admin/pointfree'}>
                     <Gem className={'h-4'} />
                     <span>포인트프리</span>
                   </Link>
