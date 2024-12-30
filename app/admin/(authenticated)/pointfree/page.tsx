@@ -150,7 +150,7 @@ export default function PointFreePage() {
       <PageBody>
         <div className="mb-4">
           <Input
-            placeholder="Search 이메일 계정, 문의 제목, 카테고리"
+            placeholder="Search 이메일 계정, 포인트프리 ID"
             value={globalFilter}
             onChange={handleFilterChange}
             className="mb-2"
