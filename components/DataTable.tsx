@@ -132,6 +132,7 @@ export function DataTable<T extends object>({
                       width: header.column.getSize(),
                     }}
                     key={header.id}
+                    className="border-r font-bold text-black"
                   >
                     {header.isPlaceholder
                       ? null
@@ -155,7 +156,7 @@ export function DataTable<T extends object>({
                   data-state={row.getIsSelected() && 'selected'}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className="border-r">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),
@@ -189,7 +190,7 @@ function Pagination<T>({
   table: ReactTable<T>;
 }>) {
   return (
-    <div className="mt-6 flex items-center justify-center gap-4">
+    <div className="my-4 flex items-center justify-center gap-4">
       <Button
         size={'icon'}
         variant={'outline'}

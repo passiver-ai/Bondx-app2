@@ -35,16 +35,16 @@ export function AdminSidebar() {
           <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
-                <SidebarMenuButton isActive={path === '/admin'} asChild>
-                  <Link className={'flex gap-2.5'} href={'/admin'}>
+                <SidebarMenuButton isActive={path === '/admin/user-management'} asChild>
+                  <Link className={'flex gap-2.5'} href={'/admin/user-management'}>
                     <Users className={'h-4'} />
                     <span>유저 관리</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenu>
               <SidebarMenu>
-                <SidebarMenuButton isActive={path === '/admin'} asChild>
-                  <Link className={'flex gap-2.5'} href={'/admin'}>
+                <SidebarMenuButton isActive={path === '/admin/wallet-management'} asChild>
+                  <Link className={'flex gap-2.5'} href={'/admin/wallet-management'}>
                     <Wallet className={'h-4'} />
                     <span>지갑 관리</span>
                   </Link>
