@@ -196,7 +196,7 @@ const data = [
   },
 ];
 
-export default function MoneyTransferManagementPage() {
+export default function UserManagementPage() {
   const [globalFilter, setGlobalFilter] = React.useState('');
   const [isOpenKYCStatus, setOpenKYCStatus] = React.useState(false);
   const [isOpenRatingForm, setOpenRatingForm] = React.useState(false);
