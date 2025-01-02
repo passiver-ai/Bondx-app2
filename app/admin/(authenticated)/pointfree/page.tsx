@@ -110,32 +110,6 @@ const data = [
   },
 ];
 
-const columns: ColumnDef<(typeof data)[0]>[] = [
-  { accessorKey: 'num', header: 'Num' },
-  { accessorKey: 'email', header: '이메일 계정' },
-  { accessorKey: 'pointEntryID', header: '포인트프리 ID' },
-  {
-    accessorKey: 'status',
-    header: 'ID 등록 상태',
-    cell: ({ row }) => {
-      const isCheck = row.getValue('status') === '등록';
-      const Icon = !isCheck ? CircleMinus : CircleCheckBig;
-
-      return (
-        <div>
-          <Icon
-            className={cn(
-              'inline-block h-[1em]',
-              !isCheck ? 'text-[#64748B]' : 'text-[#22C55E]',
-            )}
-          />{' '}
-          {row.getValue('status')}
-        </div>
-      );
-    },
-  },
-];
-
 export default function PointFreePage() {
   const router = useRouter();
   const [globalFilter, setGlobalFilter] = React.useState('');
@@ -143,6 +117,32 @@ export default function PointFreePage() {
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGlobalFilter(event.target.value);
   };
+
+  const columns: ColumnDef<(typeof data)[0]>[] = [
+    { accessorKey: 'num', header: 'Num' },
+    { accessorKey: 'email', header: '이메일 계정' },
+    { accessorKey: 'pointEntryID', header: '포인트프리 ID' },
+    {
+      accessorKey: 'status',
+      header: 'ID 등록 상태',
+      cell: ({ row }) => {
+        const isCheck = row.getValue('status') === '등록';
+        const Icon = !isCheck ? CircleMinus : CircleCheckBig;
+  
+        return (
+          <div>
+            <Icon
+              className={cn(
+                'inline-block h-[1em]',
+                !isCheck ? 'text-[#64748B]' : 'text-[#22C55E]',
+              )}
+            />{' '}
+            {row.getValue('status')}
+          </div>
+        );
+      },
+    },
+  ];
 
   return (
     <>

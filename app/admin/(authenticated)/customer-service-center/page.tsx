@@ -126,33 +126,6 @@ const data = [
   },
 ];
 
-const columns: ColumnDef<(typeof data)[0]>[] = [
-  { accessorKey: 'email', header: '이메일 계정' },
-  { accessorKey: 'title', header: '문의 제목' },
-  { accessorKey: 'category', header: '카테고리' },
-  { accessorKey: 'date', header: '날짜' },
-  {
-    accessorKey: 'status',
-    header: '답변 상태',
-    cell: ({ row }) => {
-      const isCheck = row.getValue('status') === '답변 완료';
-      const Icon = !isCheck ? CircleMinus : CircleCheckBig;
-
-      return (
-        <div>
-          <Icon
-            className={cn(
-              'inline-block h-[1em]',
-              !isCheck ? 'text-[#64748B]' : 'text-[#22C55E]',
-            )}
-          />{' '}
-          {row.getValue('status')}
-        </div>
-      );
-    },
-  },
-];
-
 export default function CustomerCenterPage() {
   const router = useRouter();
   const [globalFilter, setGlobalFilter] = React.useState('');
@@ -160,6 +133,33 @@ export default function CustomerCenterPage() {
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGlobalFilter(event.target.value);
   };
+
+  const columns: ColumnDef<(typeof data)[0]>[] = [
+    { accessorKey: 'email', header: '이메일 계정' },
+    { accessorKey: 'title', header: '문의 제목' },
+    { accessorKey: 'category', header: '카테고리' },
+    { accessorKey: 'date', header: '날짜' },
+    {
+      accessorKey: 'status',
+      header: '답변 상태',
+      cell: ({ row }) => {
+        const isCheck = row.getValue('status') === '답변 완료';
+        const Icon = !isCheck ? CircleMinus : CircleCheckBig;
+  
+        return (
+          <div>
+            <Icon
+              className={cn(
+                'inline-block h-[1em]',
+                !isCheck ? 'text-[#64748B]' : 'text-[#22C55E]',
+              )}
+            />{' '}
+            {row.getValue('status')}
+          </div>
+        );
+      },
+    },
+  ];
 
   return (
     <>

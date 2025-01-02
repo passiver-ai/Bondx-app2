@@ -118,44 +118,44 @@ const data = [
   },
 ];
 
-const columns: ColumnDef<(typeof data)[0]>[] = [
-  { accessorKey: 'sender_account', header: '보낸 계정' },
-  { accessorKey: 'receiver_account', header: '받은 계정' },
-  { accessorKey: 'bondx_amount', header: 'BONDX 수량' },
-  { accessorKey: 'date', header: '날짜' },
-  {
-    accessorKey: 'status',
-    header: '상태',
-    cell: ({ row }) => {
-      const isCheck = row.getValue('status') === '완료';
-      const isCross = row.getValue('status') === '실패';
-      const Icon = isCheck ? CircleCheckBig : isCross ? CircleX : Hourglass;
-
-      return (
-        <div>
-          <Icon
-            className={cn(
-              'inline-block h-[1em]',
-              isCheck
-                ? 'text-[#22C55E]'
-                : isCross
-                  ? 'text-[#EF4444]'
-                  : 'text-[#F97316]',
-            )}
-          />{' '}
-          {row.getValue('status')}
-        </div>
-      );
-    },
-  },
-];
-
 export default function MoneyTransferManagementPage() {
   const [globalFilter, setGlobalFilter] = React.useState('');
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGlobalFilter(event.target.value);
   };
+
+  const columns: ColumnDef<(typeof data)[0]>[] = [
+    { accessorKey: 'sender_account', header: '보낸 계정' },
+    { accessorKey: 'receiver_account', header: '받은 계정' },
+    { accessorKey: 'bondx_amount', header: 'BONDX 수량' },
+    { accessorKey: 'date', header: '날짜' },
+    {
+      accessorKey: 'status',
+      header: '상태',
+      cell: ({ row }) => {
+        const isCheck = row.getValue('status') === '완료';
+        const isCross = row.getValue('status') === '실패';
+        const Icon = isCheck ? CircleCheckBig : isCross ? CircleX : Hourglass;
+  
+        return (
+          <div>
+            <Icon
+              className={cn(
+                'inline-block h-[1em]',
+                isCheck
+                  ? 'text-[#22C55E]'
+                  : isCross
+                    ? 'text-[#EF4444]'
+                    : 'text-[#F97316]',
+              )}
+            />{' '}
+            {row.getValue('status')}
+          </div>
+        );
+      },
+    },
+  ];
 
   return (
     <>
